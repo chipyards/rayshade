@@ -1,0 +1,52 @@
+<html><head><TITLE>Rayshade Primitives - Box</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="box">
+<a name="fig2-02">
+<h2>box</h2>
+<pre>        box <i>[surface-desc]    x1 y1 z1   x2 y2 z2</i>
+</pre>
+
+<IMG SRC="fig2-02.gif">Figure 2-2<p>
+
+The two points define the diagonally opposite vertices of a box;  the box's
+edges are parallel to the axis.  If you require a box that is not  axis-aligned,
+create the box at the origin, rotate it into the required orientation then 
+translate it to the required position.<p>
+
+<a name="fig2-03">
+The example below shows three boxes, the first and third are transformed:
+"shearing" them vertically, the second box is untransformed!<p>
+
+<IMG SRC="fig2-03.gif">Figure 2-3<p>
+<pre>        /*
+          box.ray
+          3 boxes
+          Stephen Peter 24 feb 92
+        */
+        eyep .51 7 3
+        lookp .5 0 1.5
+        background .9 .9 .9
+        screen 300 200
+        light 1 point 5 5 3
+
+        surface green
+            ambient 0 .1 0
+            diffuse 0 .5 0
+
+        box green 0 0 0  1 1 1
+            <a href="../6-transf/transfor.htm">transform</a> 1 0 2  0 1 0  0 0 1  1.5 0 0
+        box green 0 0 0  1 1 1
+        box green 0 0 0  1 1 1
+            transform 1 0 2  0 1 0  0 0 1  .5 0 0
+            scale -1 1 1
+</pre>
+
+<hr>
+Go to next primitive: <a href="cone.htm">cone</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 2 - Rayshade Primitives - Box<p>
+</body></html>

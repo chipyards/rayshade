@@ -1,0 +1,62 @@
+/*
+  Falt-Dome created using scale
+
+  Stephn Peter   S.Peter@unsw.edu.au
+  8 Feb 93
+*/
+screen 300 200
+eyep -500 -2500 -200
+lookp 1000 500 500
+light 1 point -500 -300 -1000
+background .9 .9 .9
+
+surface light_brown
+    ambient .30 .15 0
+    diffuse .59 .26 .13
+
+name part1
+    intersect    
+        difference
+            list
+                disc     2000  0 0 -1000   0 0 -1
+                cylinder 2000  0 0 -1000   0 0 -500
+                disc     2000  0 0 -500    0 0 1
+            end
+            list
+                disc     1800  0 0 -1010   0 0 -1
+                cylinder 1800  0 0 -1010   0 0 -490
+                disc     1800  0 0 -490    0 0 1
+            end
+        end
+        box -2010 0 -1010  2010 2010 -490
+    end
+
+name part2  object part1 scale .9 .9 .75 
+name part3  object part2 scale .9 .9 .75 
+name part4  object part3 scale .9 .9 .75 
+name part5  object part4 scale .9 .9 .75 
+name part6  object part5 scale .9 .9 .75 
+name part7  object part6 scale .9 .9 .75 
+name part8  object part7 scale .9 .9 .75 
+name part9  object part8 scale .9 .9 .75 
+name part10 object part9 scale .9 .9 .75 
+name part11 object part10 scale .9 .9 .75 
+name part12 object part11 scale .9 .9 .75 
+
+name flat_dome
+    list
+        object part1
+        object part2
+        object part3
+        object part4
+        object part5
+        object part6
+        object part7
+        object part8
+        object part9
+        object part10
+        object part11
+        object part12
+    end
+
+object light_brown flat_dome translate 0 0 1000

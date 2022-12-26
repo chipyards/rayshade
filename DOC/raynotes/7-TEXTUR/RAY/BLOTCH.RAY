@@ -1,0 +1,31 @@
+/*
+   blotch example
+   Stephn Peter   S.Peter@unsw.edu.au
+   12 Feb 93
+*/
+eyep 0 -1 75
+lookp 0 0 0
+light 1 point 40 -40 40
+screen 300 300
+background .9 .9 .9
+
+surface blue
+    ambient  0.2 0.2 0.5
+    diffuse  0.1 0.1 0.3
+    specular 0.3 0.3 0.6
+    specpow 10
+    reflect 0.4
+
+surface white
+    ambient  0.3 0.3 0.3
+    diffuse  0.5 0.5 0.5
+    specular 0.5 0.5 0.5
+    specpow 10
+    reflect 0.4
+
+box blue -29   1 -1  -11 29 1    texture blotch -0.75 white
+box blue  -9   1 -1    9 29 1    texture blotch -0.50 white
+box blue  11   1 -1   29 29 1    texture blotch -0.25 white
+box blue -29 -29 -1  -11 -1 1    texture blotch  0.00 white
+box blue  -9 -29 -1    9 -1 1    texture blotch  0.25 white
+box blue  11 -29 -1   29 -1 1    texture blotch  0.50 white

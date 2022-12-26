@@ -1,0 +1,104 @@
+<html><head><TITLE>Rayshade Transformations - Scale</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="scale">
+<a name="fig6-04">
+<h2>scale</h2>
+<pre>        scale <i>xmult ymult zmult</i>
+</pre>
+
+<IMG SRC="fig6-04.gif">Figure 6-4<p>
+
+Scale is like the multiplication (x) operator in mathematics, it does
+not simply enlarge or reduce an object is "multiplies" it, if you have
+a sphere with a radius of 2, centred at (5 5 5) and you scale that sphere
+by 2 2 2 the result is a sphere of radius 4 centred at (10 10 10).<p>
+
+The best way to "enlarge" an object, is fistly to translate the object
+to the origin (0 0 0), then scale the object and then finally to
+translate the object back to it's location.<p>
+
+Scale can also be used to "mirror" (reflect) an object:  if one of the
+scale values is negative then the object is flipped in that axis.
+This is useful when creating symetrical objects, because only half the
+object needs to be created.<p>
+
+The example below shows a "flat dome" created using a hollow cylinder
+that is repeatedly scaled.<p>
+
+<a name="fig6-05">
+<IMG SRC="fig6-05.gif">Figure 6-5
+<a name="fig6-06">
+<IMG SRC="fig6-06.gif">Figure 6-6<p>
+<pre>        /*
+          scale.ray
+          Flat-Dome created using scale
+          Stephen Peter 8 Feb 93
+        */
+        screen 300 200
+        eyep -500 -2500 -200
+        lookp 1000 500 500
+        light 1 point -500 -300 -1000
+        background .9 .9 .9
+
+        surface light_brown
+            ambient .30 .15 0
+            diffuse .59 .26 .13
+
+        name part1
+            intersect
+                difference
+                    list
+                        disc     2000  0 0 -1000   0 0 -1
+                        cylinder 2000  0 0 -1000   0 0 -500
+                        disc     2000  0 0  -500   0 0 1
+                    end
+                    list
+                        disc     1800  0 0 -1010   0 0 -1
+                        cylinder 1800  0 0 -1010   0 0 -490
+                        disc     1800  0 0  -490   0 0 1
+                    end
+                end
+                box -2010 0 -1010  2010 2010 -490
+            end
+
+        name part2  object part1 scale .9 .9 .75
+        name part3  object part2 scale .9 .9 .75
+        name part4  object part3 scale .9 .9 .75
+        name part5  object part4 scale .9 .9 .75
+        name part6  object part5 scale .9 .9 .75
+        name part7  object part6 scale .9 .9 .75
+        name part8  object part7 scale .9 .9 .75
+        name part9  object part8 scale .9 .9 .75
+        name part10 object part9 scale .9 .9 .75
+        name part11 object part10 scale .9 .9 .75
+        name part12 object part11 scale .9 .9 .75
+
+        name flat_dome
+            list
+                object part1
+                object part2
+                object part3
+                object part4
+                object part5
+                object part6
+                object part7
+                object part8
+                object part9
+                object part10
+                object part11
+                object part12
+            end
+
+        object light_brown flat_dome translate 0 0 1000
+</pre>
+
+<hr>
+Go to next section: <a href="transfor.htm">Transform</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 6 - Transformations - Scale<p>
+</body></html>
+

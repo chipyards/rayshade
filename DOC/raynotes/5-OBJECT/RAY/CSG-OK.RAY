@@ -1,0 +1,46 @@
+/*
+  chess piece, constructed so there are no redundant surfaces.
+
+  Stephn Peter   S.Peter@unsw.edu.au
+  sun 8 mar 92
+*/
+eyep  150 50 150
+lookp -15 0 50
+background .9 .9 .9
+light .5 point 250 0 150
+screen 600 900
+fov 25
+
+surface salmon
+    ambient .2 .1 .1 diffuse 1 .5 .45
+    specular .3 .3 .3
+
+name chess_piece
+union
+    union
+        list  /* bottom */
+            disc 25 0 0 0  0 0 -1
+            cylinder 25  0 0 0  0 0 4
+            cone 25  0 0 4  22  0 0 15
+            disc 22 0 0 15  0 0 1
+        end
+        list  /* trunk */
+            disc 19  0 0 14  0 0 -1
+            cone 19  0 0 14  3 0 0 95
+            disc 3  0 0 95  0 0 1
+        end
+    end
+    union
+        list
+            disc 15  0 0 62  0 0 -1
+            cylinder 15  0 0 62  0 0 66
+            disc 15  0 0 66  0 0 1
+        end
+        sphere 14.75  0 0 77
+    end
+end
+
+difference
+    box 0 -30 -10  -30 30 100
+    object salmon chess_piece
+end

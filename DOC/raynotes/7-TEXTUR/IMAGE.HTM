@@ -1,0 +1,82 @@
+<html><head><TITLE>Rayshade Textures - Image</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="image">Image</h2>
+<pre>        texture image <i>imagename</i></pre>
+
+This texture pastes a RLE image onto a surface.  Note that some
+implementations of Rayshade use other image formats (TGA or MTV).
+There are four main sources of images for you to use:<p>
+<ul>
+<li>images created using Rayshade;</li>
+<li>scanned images (usually photographs);</li>
+<li>images created using a "paint" program (and then converted into RLE images);</li>
+<li>images "captured" from a computer screen.</li>
+</ul>
+
+The simplest way to use the image texture is to create a box from 0,0,0 to
+1,1,1 with the image, then scale, rotate and finally translate the object.  The
+box should be 0,0,0 to 1,1,1 because that's how big the image will be!  Once
+the image is on the box, you can transform the box to produce the result you
+desire.  Note that the image texture can also be transformed.<p>
+
+For another example of this texture look at the example with the
+<a href="../2-Primit/disc.htm">disc primitive</a>.<p>
+
+NOTE the use of the "IMAGES/" prefix to the image file-names.
+This tells rayshade to look in the "image library" which is located in the
+/RLE directory.  <i>This is specific to our instalation at UNSW.</i>
+A discussion of how this is achieved is contained in the section
+"<a href="../8-tips/imagelib.htm">Creating an Images directory</a>"
+in the next chapter.<p>
+
+<a name="fig7-08">
+<IMG SRC="fig7-08.gif">Figure 7-8<p>
+<pre>        /*
+           image.ray
+           Image Texture Example
+           Stephen Peter 15 Feb 93
+        */
+        eyep 0 -1 1565
+        lookp 0 0 0
+        screen 300 227
+        background .9 .9 .9
+
+        light 1 point -600 0 1500
+        light 1 point  600 0 1500
+
+        #define PIC1 IMAGES/face.rle
+        #define PIC2 IMAGES/paint.rle
+        #define PIC3 IMAGES/snap.rle
+        #define PIC4 IMAGES/room.rle
+
+        name photo
+            box 0 0 -1  1 1 0
+                texture image PIC1 map planar
+        name paint
+            box 0 0 -1  1 1 0
+                texture image PIC2 map planar
+
+        name capture
+            box 0 0 -1  1 1 0
+                texture image PIC3 map planar
+
+        name rayshade
+            box 0 0 -1  1 1 0
+                texture image PIC4 map planar
+
+        object photo    scale 600 550 1 translate -625  -90 0
+        object paint    scale 600 320 1 translate -625 -460 0
+        object capture  scale 600 470 1 translate   25  -10 0
+        object rayshade scale 600 400 1 translate   25 -460 0
+</pre>
+
+<hr>
+Go to next section: <a href="marble.htm">Marble</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 7 - Textures - Image<p>
+</body></html>
+

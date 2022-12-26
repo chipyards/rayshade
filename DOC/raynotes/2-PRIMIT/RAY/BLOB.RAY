@@ -1,0 +1,29 @@
+/* blob
+   Stephn Peter   S.Peter@unsw.edu.au
+   21 may 94
+*/
+
+eyep  5.0 -12  5.0
+lookp 3.0   0  3.0
+screen 400 400
+light 1 point 8 -4 7
+background .9 .9 .9
+
+surface shiny
+    ambient .2 .2 .1
+    diffuse .3 .3 .9
+    specular .3 .3 .3
+    reflect .3
+
+blob shiny .25
+    1    2     0 0 0
+    2    2     3 0 0
+    3    2     6 0 0
+
+   0.5   2.5   0 0 3
+    1    2     3 0 3
+    2    2     6 0 3
+
+    2    2     0 0 6
+   0.5   3     3 0 6
+    1    2     6 0 6

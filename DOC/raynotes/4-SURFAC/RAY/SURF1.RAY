@@ -1,0 +1,40 @@
+/*
+   ways to define surfaces
+   Stephn Peter   S.Peter@unsw.edu.au
+   sun 8 mar 92
+*/
+eyep 6 12 7
+lookp 2.5 2.5 3
+light 1 point 8 5 5
+background .9 .9 .9
+screen 900 600
+
+/* defining a "peach" surface */
+surface PeachPuff
+    diffuse  1. .75 .65
+    specular .25 .25  .25    reflect .75
+
+/* primitive using a defined surface */
+box PeachPuff  0 0 0  5 5 1.5
+
+/* primitive with surface definition */
+torus
+    ambient .2 .1 .03    diffuse 1. .5 .15
+    1.5 .5   2.5 2.5 2.5   0 0 1
+
+/* primitive using the default surface */
+cone .5  2.5 2.5 1.5  0  2.5 2.5 5
+
+/* define a "blue" surface */
+surface blue
+    diffuse .4 .4 1  transp .75
+
+/* create a "bowl" object (default surface) */
+name bowl difference
+    difference
+        sphere 1.5  2.5 2.5 5.5
+        box 0 0 5  5 5 7.1
+    end
+    sphere 1.4  2.5 2.5 5.5
+end
+object blue bowl

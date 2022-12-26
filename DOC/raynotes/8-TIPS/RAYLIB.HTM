@@ -1,0 +1,76 @@
+<html><head><TITLE>Rayshade Tips and Tricks - Object Library</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="library">Creating an Object Library</h2>
+
+The following section describes how I have implemented a Rayshade
+Object Library (for for by the students here at UNSW).<p>
+
+The #include (cpp) directive, has two options:
+
+<pre>        #include <i>"filename"</i>
+        #include <i>&lt;filename&gt;</i>
+</pre>
+
+The <i>"filename"</i> option is useful when including a file from
+the current directory (though absolute paths are allowed).<p>
+
+A library of rayshade objects can be created quite simply using
+the <i>&lt;filename&gt;</i> option!  When this form is used the
+filename is only searched for in the <i>standard include directories</i>.
+What this actually means may vary between implementations, but, I would
+expect most implementations of cpp to allow the -Y parameter....
+
+The script file I use to run Rayshade includes the following:
+
+<pre>        rayshade FILE.ray -P '-Y/staff/raylib -DIMAGES=/staff/RLE' -O FILE.rle 2&gt; FILE.msg
+
+where   FILE            is the name of the rayshade description file; and
+        /staff/raylib   is the location of the "library" files.
+</pre>
+
+The -P instructs Rayshade to pass the text in quotes as parameters to cpp.
+The -Y<i>path</i> instructs cpp to include <i>path</i> in it's list of
+<i>standard include directories</i>.<p>
+
+The -D parameter is explained in the next section
+(<a href="imagelib.htm">Creating an Image Library</a>).<p>
+
+Each object in the library is contained in two files, one with the
+surface definitions and the other with the object definition.
+The library object files should not specify eye or look points, or
+in fact, anything except the object definition.<p>
+
+Where the object is a light fitting then a <b>comment</b> is included
+specifying the appropriate location for a light source...<p>
+
+The objects are (normally) located at or near (0,0,0) to make them
+easier to locate.<p>
+
+In addition to the two files mentioned above, it is normal to produce
+a drawing showing various views of the object (with dimensions) and
+written notes as appropriate.  The drawings and notes together with
+a print of the object is then posted on a wall in the Computer Graphics
+Lab!<p>
+
+To use the library, students simply look across the wall (to find the
+object they want) then reference the object in their files, for example:
+
+<pre>        #include &lt;chair_chesterman.surfaces&gt;
+        #include &lt;chair_chesterman.ray&gt;
+        object chair_chesterman translate 5000 6000 0
+</pre>
+
+The only hiccup that often ocurrs, is when the student is using Metres
+and the object uses Millimetres (or visa versa).  Of course, there
+are some objects using other units of measurement (just to make things
+interesting....).<p>
+
+<hr>
+Go to next section: <a href="imagelib.htm">Image Library</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - Rayshade Tips and Tricks - Object Library<p>
+</body></html>

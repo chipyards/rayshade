@@ -1,0 +1,117 @@
+<html><head><TITLE>Rayshade Transformations - Rotate</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h1>Introduction</h1>
+Rayshade provides three straight-forward transformations and one
+general purpose (but not straight-forward) transformation.
+Rotate and scale can sometimes cause problems for the 'beginner'
+because they don't simply spin or enlarge an object they transform
+the object relative to the origin (this is explained further below).<p>
+
+<hr>
+<a name="rotate">
+<a name="fig6-01">
+<h2>rotate</h2>
+<pre>        rotate <i>xdir ydir zdir angle</i>
+</pre>
+
+<IMG SRC="fig6-01.gif">Figure 6-1 Plan view<p>
+
+There are two things two remember with rotate, the first is that (like
+scale) it is inherrently a multiplication action and the second is that
+the rotation angle is anti-clockwise (in degrees).<p>
+
+The vector (xdir ydir zdir) to (0 0 0) provides the axis about which the
+"object" is rotated.  To understand how this operates, image yourself at the
+position (xdir ydir zdir) looking towards (0 0 0), the object will be rotate the
+specified number of (anti-clockwise) degrees perpendicular to this view.<p>
+
+While it is possible for (xdir, ydir, zdir) to be any coordinate, it is usually
+advisable initially to rotate about one of the three axes.<p>
+
+A simple example should make this clear:<p>
+
+<pre>        box  10 10 10  20 20 20  rotate  0 0 1  45</pre>
+
+The result of this rotation is that the box, which was centred at (15 15 15)
+and had aligned with the axes is now centred at (0 21.2 15) with sides at 45
+degrees to the axes (see figure 6-1 above).<p>
+
+As with scale, it is often best to translate an object to the origin, before
+rotating it.<p>
+
+This example is a column with curves cutting into the vertical.<p>
+
+<a name="fig6-02">
+<IMG SRC="fig6-02.gif">Figure 6-2
+<a name="fig6-03">
+<IMG SRC="fig6-03.gif">Figure 6-3<p>
+<pre>        /*
+           rotate.ray
+           Simple Column (without base or top)
+           Stephen Peter 7 Feb 93
+        */
+        eyep  6000 0 3000
+        lookp 0 0 2000
+        light 1 point 3000 3000 6000
+        screen 400 600
+        fov 25
+        background .9 .9 .9
+
+        name channel
+            union
+                list
+                    sphere   54.75  0 0 200
+                    sphere   54.75  0 0 3800
+                end
+                list
+                    disc     54.75  0 0  200    0 0 -1
+                    cylinder 54.75  0 0  200    0 0 3800
+                    disc     54.75  0 0 3800    0 0 1
+                end
+            end scale .7 1 1 translate 350 0 0
+
+        name half_channels
+            list
+                object channel
+                object channel rotate 0 0 1   36
+                object channel rotate 0 0 1   72
+                object channel rotate 0 0 1  108
+                object channel rotate 0 0 1  144
+                object channel rotate 0 0 1  180
+                object channel rotate 0 0 1  216
+                object channel rotate 0 0 1  252
+                object channel rotate 0 0 1  288
+                object channel rotate 0 0 1  324
+            end
+
+        name column
+            difference
+                /* main trunk on column */
+                list
+                    disc     350  0 0 0     0 0 -1
+                    cylinder 350  0 0 0     0 0 4000
+                    disc     350  0 0 4000  0 0 1
+                end
+
+                /* combine the half sets of channels */
+                union
+                    object half_channels
+                    object half_channels rotate 0 0 1  18
+                end
+            end
+
+        object column
+
+        box -3000 -3000 -100  3000 3000 0  /* base */
+</pre>
+
+<hr>
+Go to next section: <a href="scale.htm">Scale</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 6 - Transformations - Rotate<p>
+</body></html>
+

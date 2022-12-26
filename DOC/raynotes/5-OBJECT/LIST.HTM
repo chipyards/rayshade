@@ -1,0 +1,83 @@
+<html><head><TITLE>List Objects</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="list">
+<h2>List Object</h2>
+<pre>       [name <i>objname</i>] list
+<i>                 primitives and/or objects</i>
+       end  <i>[transformations] [textures]</i>
+</pre>
+
+As the name suggests list objects are simply collections of primitives and
+objects.<p>
+
+<a name="fig5-01">
+<IMG SRC="fig5-01.gif">Figure 5-1<p>
+
+In the example below, a chess piece is created (see figure 5-1 above) and
+the instantiated with a black surface and then with a "glass" surface.  The opaque
+(black) object looks reasonable, but the transparent (glass) object shows the
+object is not solid (or hollow) because the cone inside the sphere is visible.
+A correctly structured chess piece example can be seen in
+<a href="csg.htm#fig5-05">figure 5-5</a>.<p>
+
+<a name="fig5-02">
+Note that the primitives in the object have no surface applied to them.
+The surface is applied when the object is used.<p>
+
+<IMG SRC="fig5-02.gif">Figure 5-2<p>
+<pre>        /*
+          chess.ray
+          chess piece (using "list")
+          Stephen Peter   8 mar 92
+        */
+        eyep  100 200 150
+        lookp 30 0 40
+        background .9 .9 .9
+        light .5 point 0 250 150
+        screen 900 600
+
+        surface black
+            ambient  .1 .1 .1
+            specular .3 .3 .3
+            reflect  .5
+
+        surface glass
+            ambient .1 .1 .1
+            diffuse .1 .1 .1
+            transp  .85
+            index   1.3
+</pre>
+<a name="black-piece">
+<pre>        name chess_piece
+            list
+                disc     25  0 0 0   0 0 -1
+                cylinder 25  0 0 0   0 0 4
+                cone     25  0 0 4   22  0 0 15
+                disc     22  0 0 15  0 0 1
+                cone     19  0 0 15  3   0 0 95
+                disc     15  0 0 62  0 0 -1
+                cylinder 15  0 0 62  0 0 66
+                disc     15  0 0 66  0 0 1
+                sphere   14.75  0 0 77
+            end
+
+        object black chess_piece texture gloss 1
+        object glass chess_piece translate 60 0 0
+
+        /* base */
+        box
+            ambient .2 .1 .1
+            diffuse  1 .5 .45
+            specular .3 .3 .3
+            -50 -50 -10  110 50 0
+</pre>
+
+<hr>
+Go to next section: <a href="grid.htm">Grid Object</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 5 - List Objects<p>
+</body></html>

@@ -1,0 +1,61 @@
+<html><head><TITLE>Rayshade Primitives - Disc</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="disc">
+<a name="fig2-10">
+<h2>disc</h2>
+<pre>        disc <i>[surface-desc]  radius  cx cy cz  nx ny nz</i>
+</pre>
+
+<IMG SRC="fig2-10.gif">Figure 2-10<p>
+
+Create a disc with the specified radius, centred at (cx cy cz) and with the
+specified normal.  Apart from their use as "free standing" objects, discs are 
+very useful in closing cylinders and cones so that they can be used in CSG
+operations.  The direction of the normal is significant;  when discs are used
+to close cylinders the normals should point away from the inside of the 
+cylinder.<p>
+
+Calculating the disc's normal is quite simple,  for example,
+if the disc is to close off a cylinder:
+
+<pre>    cylinder   1   2 4 8   16 32 64</pre>
+
+then the normal can be calculated by subtracting the coordinates of the ends,
+[2,4,8] - [16,32,64] = [-14,-28,-56]:
+
+<pre>    disc       1    2  4  8   -14 -28 -56
+    disc       1   16 32 64    14  28  56</pre>
+
+<a name="face">
+In the example below, the texture "image" is used to "map" an RLE image
+(of a woman's face) onto a disc.<p>
+
+<a name="fig2-11">
+<IMG SRC="fig2-11.gif">Figure 2-11<p>
+<pre>        /*
+         face.ray
+         image texture on a disc
+         Stephen Peter 22 feb 92
+        */
+        eyep 0 -1 1
+        lookp  0 -0.1 0
+        screen 300 200
+        background .9 .9 .9
+
+        #define PIC IMAGES/face.rle
+
+        disc .5  0 0 0   0 0 1
+             texture <a href="../7-textur/image.htm">image</a> PIC map planar
+                  translate -0.4 -0.5 0
+</pre>
+
+<hr>
+Go to next primitive: <a href="heightfd.htm">heightfield</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 2 - Rayshade Primitives - Disc<p>
+</body></html>
+

@@ -1,0 +1,32 @@
+/*
+  simple scene
+  Stephn Peter   S.Peter@unsw.edu.au
+  fri 28 feb 92
+*/
+eyep  7.5 7.5 4
+lookp 0 0 1
+background .9 .9 .9
+screen 300 200
+light 1 point -10 20 5
+
+surface aqua
+    ambient 0 .2 .2
+    diffuse .2 .8 .8
+    specular .3 .3 .3 reflect .5
+
+/* base */
+box aqua  -5 -5 -0.5   5 5 0
+
+/* this surface colour is based of the colour salmon
+   in the file  /usr/openwin/lib/rgb.txt 
+   (which includes *many* colours) */
+surface salmon
+    ambient .2 .1 .09
+    diffuse  1 .5 .44
+    specular .3 .3 .3
+
+box salmon  3 0 0   4 1 2
+box salmon  1 0 0   2 1 2
+box salmon -1 0 0   0 1 2
+box salmon -3 0 0  -2 1 2
+box salmon -5 0 0  -4 1 2

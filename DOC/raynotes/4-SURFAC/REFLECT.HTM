@@ -1,0 +1,53 @@
+<html><head><TITLE>Defining Surfaces - Reflectivity</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="reflect">Reflectivity</h2>
+<pre>        reflect <i>reflectivity</i>
+</pre>
+
+Controls the surface reflectivity.  If the value is 0 (or it is omitted) then
+the surface will not be reflective;  if the value is 1 a mirror-like
+reflectivity will result.  The specular keyword controls the colour of the
+reflected light.<p>
+
+In this example a mirror is shown with two spheres visible in the mirror,
+the green sphere should be directly visible but the red sphere is (almost)
+hidden from direct view behind the green sphere!<p>
+
+<a name="fig4-03">
+<IMG SRC="fig4-03.gif">Figure 4-3<p>
+<pre>        /*
+          mirror.ray
+          A mirror with 2 spheres
+          sp  8 mar 92
+        */
+        eyep  7 7 5
+        lookp 0 1 3.5
+        screen 900 600
+        background .9 .9 .9
+
+        /* mirror */
+        box  specular 1 1 1 reflect 1
+            .1 1 2  0 3 5
+
+        /* two spheres */
+        sphere ambient .5 0 0
+             .5   1.5 .5 2.5
+
+        sphere ambient 0 .5 0
+             .5   2.5 1.5 3
+
+        /* wall behind mirror */
+        box ambient 0 0 .5
+             -0.1 0 1  0 4 6
+</pre>
+
+<hr>
+Go to next section: <a href="transpar.htm"> Transparency</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 4 - Defining Surfaces - Reflectivity<p>
+</body></html>
+

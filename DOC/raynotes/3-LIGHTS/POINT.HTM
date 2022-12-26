@@ -1,0 +1,43 @@
+<html><head><TITLE>Lighting and Atmospheric Effects - Point Light</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="Point">
+<a name="fig3-07">
+<h2>Point Light</h2>
+<pre>        light intensity point x y z
+</pre>
+
+<IMG SRC="fig3-07.gif">Figure 3-7<p>
+
+Define a light source of the specified intensity at (x,y,z).  The light radiates
+in all directions from (x,y,z).  This light is the simplest of the types of light;
+use it when modelling point light sources such as incandescent lights.  It is 
+also wise to use point lights to replace more complex light types while a 
+scene is being produced.<p>
+
+<a name="fig3-08">
+<IMG SRC="fig3-08.gif">Figure 3-8<p>
+<pre>        /*
+           point.ray
+           Point Light Example
+           Stephen Peter 14 Feb 93
+        */
+        eyep 11.25 -6.72 5
+        lookp 5 2 1.5
+        screen 300 200
+        background .9 .9 .9
+
+        light 1 point 0 0 8
+
+        ------- the remainder is the same as <a href="area.htm#area.ray">area.ray</a></li>-------
+</pre>
+
+<hr>
+Go to next section: <a href="spot.htm">Spot Light</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 3 - Lighting and Atmospheric Effects - Point Light<p>
+</body></html>
+

@@ -1,0 +1,24 @@
+/*
+   fbmbump example
+   Stephn Peter   S.Peter@unsw.edu.au
+   12 Feb 93
+*/
+eyep 0 -1 75
+lookp 0 0 0
+light 1 point 40 -40 40
+screen 300 300
+background .9 .9 .9
+
+surface blue
+    ambient  0.2 0.2 0.5
+    diffuse  0.1 0.1 0.3
+    specular 0.3 0.3 0.6
+    specpow 10
+    reflect 0.4
+
+box blue -29   1 -1  -11 29 1  texture fbmbump .3 -1 .5 2 5
+box blue  -9   1 -1    9 29 1  texture fbmbump .3  0 .5 2 6
+box blue  11   1 -1   29 29 1  texture fbmbump .3  1 .5 2 7
+box blue -29 -29 -1  -11 -1 1  texture fbmbump .3  2 .5 2 5
+box blue  -9 -29 -1    9 -1 1  texture fbmbump .3  3 .5 2 6
+box blue  11 -29 -1   29 -1 1  texture fbmbump .3  4 .5 2 7

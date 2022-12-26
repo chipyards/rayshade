@@ -1,0 +1,53 @@
+<html><head><TITLE>Rayshade Textures - Bump</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="bump">Bump</h2>
+<pre>        texture bump <i>scale</i></pre>
+
+Bump attempts to produce the effect of a bumpy surface, but it should be
+noted that the bumps do not cast shadows.  The bumps range in size from 0
+to scale; it is often useful to also use scale on the whole texture (this would
+allow you to scale it differently in different directions), for example:<p>
+
+<pre>        object column texture bump 3 scale 3 9 20.</pre>
+
+A good example bump texture can be found in
+the section on the <a href="../2-Primit/plane.htm">plane primitive</a>.<p>
+
+<a name="fig7-02">
+<IMG SRC="fig7-02.gif">Figure 7-2<p>
+<pre>        /*
+           bump.ray
+           Bump Example
+           Stephen Peter 12 Feb 93
+        */
+        eyep 0 -1 75
+        lookp 0 0 0
+        light 1 point 40 -40 40
+        screen 300 300
+        background .9 .9 .9
+
+        surface blue
+            ambient  0.2 0.2 0.5
+            diffuse  0.1 0.1 0.3
+            specular 0.3 0.3 0.6
+            specpow 10
+            reflect 0.4
+
+        box blue -29   1 -1  -11 29 1    texture bump -8
+        box blue  -9   1 -1    9 29 1    texture bump -2
+        box blue  11   1 -1   29 29 1    texture bump  1
+        box blue -29 -29 -1  -11 -1 1    texture bump  2
+        box blue  -9 -29 -1    9 -1 1    texture bump  4
+        box blue  11 -29 -1   29 -1 1    texture bump  8
+</pre>
+
+<hr>
+Go to next section: <a href="checker.htm">Checker</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 7 - Textures - Bump<p>
+</body></html>
+

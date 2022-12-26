@@ -1,0 +1,46 @@
+<html><head><TITLE>Rayshade Tips and Tricks</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+<H1>Notes on Rayshade - 8 - Tips and Tricks</h1>
+
+This section contains a number of "tips and tricks"
+relating to creating Rayshade scenes and/or using Rayshade.
+It needs to be expanded!<p>
+
+<hr><h2><a name="cpp">Using the C language Preprocessor</h2>
+
+Before Rayshade parses a file, it passes the file to
+a program called "cpp" (the C language preprocessor,
+which is invoked as the first pass of C compilations
+on most unix computers).<p>
+
+Cpp processes a number of <i>directives</i> including:<p>
+<ul>
+    <li><code>#define        </code> see <a href="define.htm">"Using #define"</a>.
+    <li><code>#undef         </code> no example yet.
+    <li><code>#include       </code> see <a href="raylib.htm">"Creating an Object Library"</a>.
+    <li><code>#if            </code> no example yet.
+    <li><code>#ifdef         </code> no example yet.
+</ul>
+There are also a number of parameters that can be included when
+the program is called, including:
+<pre><ul><li>-Y<i>directory</i>    add 'directory' to include list (#include &lt;filename&gt;).<br>
+              see <a href="raylib.htm">"Creating an Object Library"</a>.
+         <li>-D<i>name=def</i>     similar to #define<br>
+              see <a href="imagelib.htm">"Creating an Image Library"</a>.
+         <li>-I<i>directory</i>    add 'directory' to include list (#include "filename").
+</ul></pre>
+
+<pre>
+</pre>
+For details on "cpp" refer to the documentation available at
+your site.  Various versions of the program may have particular
+syntax requirements...<p>
+
+<hr>
+Go to next section: <a href="define.htm">Define</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 8 - Tips and Tricks<p>
+</body></html>

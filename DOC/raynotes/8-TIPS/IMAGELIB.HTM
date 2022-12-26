@@ -1,0 +1,45 @@
+<html><head><TITLE>Rayshade Tips and Tricks - Image Library</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="images">Creating an Images directory</h2>
+
+The following section describes how I have implemented a Rayshade
+Image Library (for for by the students here at UNSW).<p>
+
+When creating models of buildings, it is often very useful to include
+images inside (and outside) the spaces being modelled.  The images could
+be used as textures (for example: wallpaper or tiles) or as paintings/pictures
+or even as outside "scenes"....<p>
+
+The script file I use to run Rayshade includes the following:
+
+<pre>        rayshade FILE.ray -P '-Y/staff/raylib -DIMAGES=/staff/RLE' -O FILE.rle 2> FILE.msg
+
+where   FILE            is the name of the rayshade description file; and
+        /staff/RLE      is the location of the image "library" files.
+</pre>
+
+The -P instructs Rayshade to pass the text in quotes as parameters to cpp.
+The -D is like using #define, in the example above it defines "IMAGES" as
+being the directory "/staff/RLE".  This directory includes images that can
+be accessed by all the people using Rayshade.<p>
+
+For example:
+
+<pre>        name mountain
+            box 0 0 0   1 1 1   texture image IMAGES/mountain.rle
+
+        object mountain
+            scale   3000 2000 1       /* scale the image to it's proper size */
+            rotate   1 0 0   90       /* stand it up                         */
+            rotate   0 0 1   90       /* align the picture along the Y axis  */
+            translate 8000 3500 1700  /* put it in place                     */
+</pre>
+
+<hr>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - Rayshade Tips and Tricks - Image Library<p>
+</body></html>

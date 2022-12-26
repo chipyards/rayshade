@@ -1,0 +1,38 @@
+/*
+   Image Texture Example
+   Stephn Peter   S.Peter@unsw.edu.au
+   15 Feb 93
+*/
+eyep 0 -1 1565
+lookp 0 0 0
+screen 300 227
+background .9 .9 .9
+
+light 1 point -600 0 1500
+light 1 point  600 0 1500
+
+#define PIC1 face.rle
+#define PIC2 paint.rle
+#define PIC3 snap.rle
+#define PIC4 room.rle
+
+name photo
+    box 0 0 -1  1 1 0
+        texture image PIC1 map planar
+
+name paint
+    box 0 0 -1  1 1 0
+        texture image PIC2 map planar
+
+name capture
+    box 0 0 -1  1 1 0
+        texture image PIC3 map planar
+
+name rayshade
+    box 0 0 -1  1 1 0
+        texture image PIC4 map planar
+
+object photo    scale 600 550 1 translate -625  -90 0
+object paint    scale 600 320 1 translate -625 -460 0
+object capture  scale 600 470 1 translate   25  -10 0
+object rayshade scale 600 400 1 translate   25 -460 0

@@ -1,0 +1,46 @@
+/*
+   example of body;
+     2 glass cubes
+   Stephn Peter   S.Peter@unsw.edu.au
+   21 may 94
+*/
+eyep  8 -5 4
+lookp 3  2 .3
+screen 450 300
+light 1 point  4 -8 5
+light 1 point -4 -8 5
+
+
+surface glass1
+    ambient  .02 .02 .02
+    diffuse  .02 .02 .02
+    specular .80 .80 .80
+    specpow  32
+    transp   .75
+    index    1.15
+
+surface glass2
+    ambient  .02 .02 .02
+    diffuse  .02 .02 .02
+    specular .80 .80 .80
+    specpow  32
+    transp   .75
+    index    1.15
+    body     .4  .3  1
+
+surface cream
+    ambient  .2 .2 .2
+    diffuse  .7 .7 .7
+    specular .3 .3 .3
+
+surface green
+    ambient  .2 .2 .2
+    diffuse   0 .7  0
+    specular .2 .4 .2
+
+/* base */
+plane green 0 0 0   0 0 1
+  texture checker cream
+
+box glass1  0 0 0  2 2 2
+box glass2  4 0 0  6 2 2

@@ -1,0 +1,41 @@
+<html><head><TITLE>Rayshade Introduction</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+<H1>Notes on Rayshade - 1 - Introduction</H1>
+<H2>Stephen Peter</H2>
+
+Rayshade is a ray tracing program written by Craig Kolb and Rod Bogart.
+The program reads a scene description file and then renders the scene.  The 
+result is a 24 bit colour image which can then be displayed (or printed).
+This document is not meant as a definitive reference to Rayshade (see Craig
+Kolb's Rayshade User's Guide),  but it is meant to introduce the basics of 
+Rayshade in simple terms (where possible!) and with many examples.<P>
+
+<hr>
+<H2><a name="SceneDescription">Scene Description Files</H2>
+
+The scene description files read by Rayshade need to follow a particular
+syntax (grammar), deviation from this will often cause Rayshade to flag the
+line with the incorrect information and then halt - without producing an 
+image.  Most of this document is intended to explain the particular syntax 
+required by Rayshade, but it should also give (through the examples) a guide
+in how to approach creating scenes.<P>
+
+The scenes rendered by Rayshade are described by lists of simple geometric
+primitives, that are placed in three dimensional cartesian space.<P>
+
+If Rayshade finds errors in a scene description, it identifies the kind of
+error and the line number at which the error was detected.
+<I>Sometimes Rayshade identifies the line after the line with the error.</I>
+If, for example, a sphere has only three numbers following it (rather than
+the four that are required), rayhsade will not 'flag' the line with the
+sphere, it will flag the line where the next primitive (or whatever) starts,
+because it is still looking for that fourth number....<P>
+
+<hr>
+Go to next section: <a href="viewdef.htm">Defining a View</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 1 - Introduction<p>
+</body></html>

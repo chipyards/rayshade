@@ -1,0 +1,40 @@
+<html><head><TITLE>Lighting and Atmospheric Effects - Directional Light</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="Directional">
+<a name="fig3-03">
+<h2>Directional Light</h2>
+<pre>        light <i>intensity</i> directional  <i>vx vy vz</i>
+</pre>
+
+<IMG SRC="fig3-03.gif">Figure 3-3<p>
+
+Use directional light for distant light sources (such as the sun).  The light
+source shines in the direction of the vector (vx,vy,vz) -> (0,0,0).<p>
+
+<a name="fig3-04">
+<IMG SRC="fig3-04.gif">Figure 3-4<p>
+<pre>        /*
+           directional.ray
+           Directional Light Example
+           Stephen Peter 14 Feb 93
+        */
+        eyep 11.25 -6.72 5
+        lookp 5 2 1.5
+        screen 300 200
+        background .9 .9 .9
+
+        light 1 directional -1 -1 1
+
+        ------- the remainder is the same as <a href="area.htm#area.ray">area.ray</a></li>-------
+</pre>
+
+<hr>
+Go to next section: <a href="extended.htm">Extended Light</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 3 - Lighting and Atmospheric Effects - Directional Light<p>
+</body></html>
+

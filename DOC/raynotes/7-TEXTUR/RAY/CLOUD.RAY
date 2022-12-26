@@ -1,0 +1,46 @@
+/*
+ cloud texture
+ Stephn Peter   S.Peter@unsw.edu.au
+ 16 Feb 93
+*/
+screen 300 450
+fov 30
+eyep  0 -13 0
+lookp 0 0 0
+background .5 .5 .7
+light 1 point -20 -20 20
+light 1 point  20 -20 20
+
+surface white
+    ambient  0.4 0.4 0.4
+    diffuse  0.6 0.6 0.6
+
+list 
+    sphere white 1  0 0 0  
+        texture cloud 1 0.5 2.0 6 0.16 0.87 0.33 
+end translate -1.5 0 3
+    
+list 
+    sphere white 1  0 0 0  
+        texture cloud 1 0.5 2.0 6 0.44 0.6 0.21 
+end translate 1.5 0 3
+    
+list 
+    sphere white 1  0 0 0  
+        texture cloud 1 0.5 2.0 5 0.03 0.233 0.74 
+end translate -1.5 0 0
+    
+list 
+    sphere white 1  0 0 0  
+        texture cloud 1 0.5 2.0 5 0.46 0.41 0.13 
+end translate 1.5 0 0
+    
+list 
+    sphere white 1  0 0 0  
+        texture cloud 1 0.5 2.0 6 0.08 0.36 0.94 
+end translate  -1.5 0 -3
+    
+list 
+    sphere white 1  0 0 0  
+        texture cloud 2 0.5 2.0 5 0.02 0.33 0.65 
+end translate  1.5 0 -3

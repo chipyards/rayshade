@@ -1,0 +1,41 @@
+<html><head><TITLE>Lighting and Atmospheric Effects - Extended Light</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="Extended">
+<a name="fig3-05">
+<h2>Extended Light</h2>
+<pre>        light <i>intensity</i> extended <i>radius x y z</i>
+</pre>
+
+<IMG SRC="fig3-05.gif">Figure 3-5<p>
+
+Extended light works in much the same way as point light, except that the
+light source itself can be given a size (radius) and (because it has a size) the
+light will have "fuzzy" edges.<p>
+
+<a name="fig3-06">
+<IMG SRC="fig3-06.gif">Figure 3-6<p>
+<pre>        /*
+           extended.ray
+           Extended Light Example
+           Stephen Peter 14 Feb 93
+        */
+        eyep 11.25 -6.72 5
+        lookp 5 2 1.5
+        screen 300 200
+        background .9 .9 .9
+
+        light 1 extended 2  0 0 8
+
+        ------- the remainder is the same as <a href="area.htm#area.ray">area.ray</a></li>-------
+</pre>
+
+<hr>
+Go to next section: <a href="point.htm">Point Light</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 3 - Lighting and Atmospheric Effects - Extended Light<p>
+</body></html>
+

@@ -1,0 +1,66 @@
+<html><head><TITLE>Lighting and Atmospheric Effects - Area Light</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="fig3-01">
+<a name="Area">
+<h2>Area Light</h2>
+<pre>        light <i>intensity</i> area  <i>x1 y1 z1  x2 y2 z2  Usamp  x3 y3 z3 Vsamp</i>
+</pre>
+
+<IMG SRC="fig3-01.gif">Figure 3-1<p>
+
+Area lights are numerous (Usamp x Vsamp) point lights arranged within the
+area defined by (x1 y1 z1) - (x2 y2 z2) - (x3 y3 z3).  Scenes using these 
+lights can be a long time to render because "complete lighting calculations"
+are performed for each point light (Rayshade User's Guide, section 4.1).<p>
+
+<a name="fig3-02">
+<IMG SRC="fig3-02.gif">Figure 3-2<p>
+<a name="area.ray">
+<pre>        /*
+           area.ray
+           Area Light Example
+           Stephen Peter 14 Feb 93
+        */
+        eyep 11.25 -6.72 5
+        lookp 5 2 1.5
+        screen 300 200
+        background .9 .9 .9
+
+        light 1 area -5 0 3  0 5 3  8  -5 0 6  4
+
+        surface aqua
+            ambient  0.0 0.2 0.2
+            diffuse  0.2 0.8 0.8
+            specular 0.3 0.3 0.3
+            reflect  0.5
+
+        surface salmon
+            ambient  0.2 0.1 0.1
+            diffuse  1.0 0.5 0.44
+            specular 0.3 0.3 0.3
+            reflect 0.6
+
+        box aqua  -5 -5 -1  10 15 0    /* base */
+
+        name shape
+            list
+                box      -1 -1 0  1 1 1
+                cylinder 0.5  -0.5 0 1   -0.5 0 4
+                disc     0.5  -0.5 0 4   0 0 1
+            end
+
+        object salmon shape translate 5 0 0
+        object salmon shape translate 4 3 0
+        object salmon shape translate 3 6 0
+</pre>
+
+<hr>
+Go to next section: <a href="directio.htm">Directional Light</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 3 - Lighting and Atmospheric Effects - Area Light<p>
+</body></html>
+

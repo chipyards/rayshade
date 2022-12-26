@@ -1,0 +1,44 @@
+/*
+    intersect a series of boxes with a sphere
+    Stephn Peter   S.Peter@unsw.edu.au
+    2 aug 92
+*/
+
+eyep 1250 450 1600
+lookp 0 0 0
+screen 900 600
+
+light 1 point 1500 1000 1000
+
+surface white
+    ambient   0  0 .3
+    diffuse  .4 .4 .4
+    specular .4 .4 .4
+    reflect  .2
+    specpow  50
+
+surface blue
+    ambient   0  0 .3
+    diffuse  .2 .2 .4
+    specular .4 .4 .4
+    reflect  .2
+    specpow  25
+
+name boxes list
+    box -600 -455 -600  600 -445 600
+    box -600 -305 -600  600 -295 600
+    box -600 -155 -600  600 -145 600
+    box -600    5 -600  600   -5 600
+    box -600  155 -600  600  145 600
+    box -600  305 -600  600  295 600
+    box -600  455 -600  600  445 600
+end
+
+name frame intersect
+    object white boxes
+    sphere blue  500  0 0 0
+end
+
+object frame rotate 0 0 1  60
+object frame rotate 0 0 1 -60
+object frame

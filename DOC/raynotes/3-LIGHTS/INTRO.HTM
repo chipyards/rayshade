@@ -1,0 +1,32 @@
+<html><head><TITLE>Lighting and Atmospheric Effects</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+<H1>Notes on Rayshade - 3 - Lighting and Atmospheric Effects</H1>
+
+Rayshade provides a number of different light source types, from the simple 
+"point" light to the much more computationally intensive "area" light.<p>
+
+For each type of light you must specify the intensity, this is either a red-
+green-blue triple indicating the colour of the light or a single value
+(providing "white" light).<p>
+
+If no light source is specified, a directional light with an intensity of
+1.0 with a vector of (1, -1, 1) is used [Rayshade User's, Guide Chapter 4].<p>
+
+Note that the light sources themselves are always invisible!<p>
+
+<hr>
+<h2><a name="Ambient">Ambient Light</h2>
+<pre>        light <i>intensity</i> ambient
+</pre>
+
+The "background" light present in a scene, there can be only one ambient
+light, if more than one are defined the last is used.<p>
+
+<hr>
+Go to next section: <a href="area.htm">Area Light</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 3 - Lighting and Atmospheric Effects<p>
+</body></html>

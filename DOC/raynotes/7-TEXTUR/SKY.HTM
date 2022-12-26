@@ -1,0 +1,48 @@
+<html><head><TITLE>Rayshade Textures - Sky</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="sky">Sky</h2>
+<pre>        texture sky <i>scale H l octaves cthresh lthresh</i></pre>
+
+Similar to fbm texture (see section 8.1 of the Rayshade User's Guide).
+This texture (like cloud) changes a surface's transparency not it's colour.<p>
+
+<a name="fig7-10">
+<IMG SRC="fig7-10.gif">Figure 7-10<p>
+<pre>        /*
+           sky.ray
+           Sky Example
+           Stephen Peter 12 Feb 93
+        */
+        eyep 0 -1 75
+        lookp 0 0 0
+        light 1 point 40 -40 40
+        screen 300 300
+        background .9 .9 .9
+
+        surface blue
+            ambient  0.2 0.2 0.5
+            diffuse  0.1 0.1 0.3
+
+        box blue -29   1 -1  -11 29 1
+            texture sky -1 .5 2 5 .8 .2
+        box blue  -9   1 -1    9 29 1
+            texture sky  0 .5 2 6 .8 .2
+        box blue  11   1 -1   29 29 1
+            texture sky  1 .5 2 7 .8 .2
+        box blue -29 -29 -1  -11 -1 1
+            texture sky  2 .5 2 5 .8 .2
+        box blue  -9 -29 -1    9 -1 1
+            texture sky  3 .5 2 6 .8 .2
+        box blue  11 -29 -1   29 -1 1
+            texture sky  4 .5 2 7 .8 .2
+</pre>
+
+<hr>
+Go to next section: <a href="stripe.htm">Stripe</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 7 - Textures- Sky<p>
+</body></html>

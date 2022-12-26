@@ -1,0 +1,70 @@
+<html><head><TITLE>Rayshade Textures - Blotch</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="blotch">
+<h2>Blotch</h2>
+<pre>        texture blotch <i>BlendFactor surface</i></pre>
+
+Blotch produces an almost cloud-like pattern;  BlendFactor ranges from -1 
+to 1, with 0 providing an approximately even mix of the object surface and 
+the "blotch surface".<p>
+
+Use this surface where you want to have an object which is mix of colours;
+perhaps to show spilt water?  It can also be used to good advantage when the
+alternate surfaces are quite similar in colour - to produce a subtle alteration
+of surface colour (or reflectivity....).<p>
+
+In the example below, the amount of the blotch surface (white) decreases from a
+"high" on the left of -0.75 (that is: 12.5% default 87.5% blotch) to a "low"
+on the right of 0.50 (that is:  75% default 25% blotch).<p>
+
+<a name="fig7-01">
+<IMG SRC="fig7-01.gif">Figure 7-1<p>
+<pre>        /*
+           blotch.ray
+           Blotch Example
+           Stephen Peter 12 Feb 93
+        */
+        eyep 0 -1 75
+        lookp 0 0 0
+        light 1 point 40 -40 40
+        screen 300 300
+        background .9 .9 .9
+
+        surface blue
+            ambient  0.2 0.2 0.5
+            diffuse  0.1 0.1 0.3
+            specular 0.3 0.3 0.6
+            specpow 10
+            reflect 0.4
+
+        surface white
+            ambient  0.3 0.3 0.3
+            diffuse  0.5 0.5 0.5
+            specular 0.5 0.5 0.5
+            specpow 10
+            reflect 0.4
+
+        box blue -29   1 -1  -11 29 1
+            texture blotch -0.75 white
+        box blue  -9   1 -1    9 29 1
+            texture blotch -0.50 white
+        box blue  11   1 -1   29 29 1
+            texture blotch -0.25 white
+        box blue -29 -29 -1  -11 -1 1
+            texture blotch  0.00 white
+        box blue  -9 -29 -1    9 -1 1
+            texture blotch  0.25 white
+        box blue  11 -29 -1   29 -1 1
+            texture blotch  0.50 white
+</pre>
+
+<hr>
+Go to next section: <a href="bump.htm">Bump</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 7 - Textures - Blotch<p>
+</body></html>
+

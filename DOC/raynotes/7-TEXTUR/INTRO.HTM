@@ -1,0 +1,34 @@
+<html><head><TITLE>Rayshade Textures</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+<H1>Notes on Rayshade - 7 - Textures</h1>
+
+Textures are applied to primitives and/or objects to alter the appearance
+of the object.  There are a number of different textures available with
+Rayshade, though most of them are based on a semi-random function called
+"noise".  The general format for using a texture is:<p>
+
+<pre><i>        object</i> texture <i>name [texture-arguments]</i></pre>
+
+for example (from <a href="../5-object/list.htm#black-piece">chess.ray</a>):<p>
+
+<pre>        object black chess_piece texture gloss 1</pre>
+
+or (simply):<p>
+
+<pre>        box 0 0 0  10 10 1  texture wood
+
+</pre>
+
+Note that more than one texture may be applied to an object and that
+textures may be transformed
+(see <a href="../2-primit/plane.htm#waves">waves.ray</a>).<p>
+
+<hr>
+Go to next section: <a href="blotch.htm">Blotch</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 7 - Textures<p>
+</body></html>
+

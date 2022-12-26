@@ -1,0 +1,21 @@
+/*
+  3 boxes
+  Stephn Peter   S.Peter@unsw.edu.au
+  24 feb 92
+*/
+eyep .51 7 3
+lookp .5 0 1.4
+background .9 .9 .9
+screen /*300 200*/900 600
+light 1 point 5 5 3
+
+surface green
+	ambient 0 .1 0
+	diffuse 0 .5 0
+
+box green 0 0 0  1 1 1
+	transform 1 0 2  0 1 0  0 0 1  1.5 0 0
+box green 0 0 0  1 1 1
+box green 0 0 0  1 1 1
+	transform 1 0 2  0 1 0  0 0 1  .5 0 0
+	scale -1 1 1

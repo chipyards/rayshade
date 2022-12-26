@@ -1,0 +1,74 @@
+<html><head><TITLE>CSG Problems</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="CSGproblems">CSG Problems</h2>
+
+For a more complete discussion of potential CSG problems, refer to section
+5.4 of the Rayshade User's Guide.<p>
+
+Note that surfaces will retain their surface definitions, so if the objects
+used in a CSG operation had different surface definitions, the resulting
+object may have different surfaces on different parts.  In the example below
+the "hollow" created from the chess piece has the chess piece object's
+surface whereas the rest of the box uses Rayshade's default surface.<p>
+
+The most common problem that occurs when constructing CSG objects 
+comes from one (or both) the objects not being properly closed.<p>
+
+<a name="fig5-12">
+The image below, has a number of errors and inconsistencies,
+including incorrect surface colouring and extraneous interior surfaces.
+Refer to <a href="csg.htm#fig5-05">figure 5-5</a>
+to see how the image should look!<p>
+
+<IMG SRC="fig5-12.gif">Figure 5-12<p>
+<pre>        /*
+          csg-prob.ray
+          csg problems:
+          chess piece constructed using list should not be used
+          in CSG when it includes overlapping shapes.
+
+          Stephen Peter  8 mar 92
+        */
+        eyep  150 50 150
+        lookp -15 0 45
+        background .9 .9 .9
+        light .5 point 250 0 150
+        screen 400 800
+        fov 20 37
+
+        surface salmon
+            ambient  .2 .1 .1
+            diffuse  1  .5 .45
+            specular .3 .3 .3
+
+        name chess_piece
+            list
+                disc     25   0 0  0      0 0 -1
+                cylinder 25   0 0  0      0 0  4
+                disc     25   0 0  4      0 0  1
+                cone     25   0 0  4  22  0 0 15
+                cone     19   0 0 15   3  0 0 95
+                disc     15   0 0 62      0 0 -1
+                cylinder 15   0 0 62      0 0 66
+                disc     15   0 0 66      0 0  1
+                sphere 14.75  0 0 77
+            end
+
+        difference
+            box 0 -30 -10  -30 30 100
+            object salmon chess_piece
+        end
+</pre>
+
+A more subtle problem can occur when the objects have surfaces that coincide.<p>
+
+<hr>
+Go to next chapter: <a href="../6-transf/rotate.htm">Transformations</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 5 - CSG Problems<p>
+</body></html>
+

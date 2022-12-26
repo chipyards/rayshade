@@ -1,0 +1,44 @@
+/*
+  simple table (with semi-transparent top)
+  Stephn Peter   S.Peter@unsw.edu.au
+  sun 8 mar 92
+*/
+eyep  2400 1400 1200
+lookp  300    0  200
+screen 900 600
+background .9 .9 .9
+light 1.4 directional 1000 1800 2000
+
+surface timber 
+    ambient .1 0 0  diffuse .3 .1 0
+
+surface FrostedGlass 
+    ambient  .02 .02 .02  diffuse .02 .02 .02
+    specular .8  .8  .8   specpow 32  
+    transp .75  index 1.15
+
+surface floor
+    diffuse .2 .4 .2   specular .8 .8 .8
+    specpow 25  reflect .8
+
+/* table top */
+box FrostedGlass -750 -450 680  750 450 700
+    texture gloss .5
+
+/* table legs and beams */
+name Timber list
+    cone  45   675  375 600  25   675  375 0
+    cone  45  -675  375 600  25  -675  375 0
+    cone  45   675 -375 600  25   675 -375 0
+    cone  45  -675 -375 600  25  -675 -375 0
+
+    box  725  400 600  -725  350 680
+    box  725 -400 600  -725 -350 680
+    box  725  350 600   675 -350 680
+    box -725  350 600  -675 -350 680
+end
+
+/* "timber" surface for object "Timber" */
+object timber Timber
+
+box floor -2000 -1500 -10  2000 1500 0

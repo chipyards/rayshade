@@ -1,0 +1,16 @@
+/*
+ image texture on a disc
+ also testing whether the RLE directory is accessable
+
+ Stephn Peter   S.Peter@unsw.edu.au
+ 22 feb 92
+*/
+eyep 0 -1 1
+lookp  0 -0.1 0
+screen 300 200
+background .9 .9 .9
+
+#define PIC IMAGES/face.rle
+
+disc .5  0 0 0   0 0 1
+     texture image PIC map planar translate -0.4 -0.5 0

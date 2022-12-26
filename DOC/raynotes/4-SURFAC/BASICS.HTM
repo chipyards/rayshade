@@ -1,0 +1,102 @@
+<html><head><TITLE>Defining Surfaces</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="ambient">ambient</h2>
+<pre>        ambient <i>red green blue</i>
+</pre>
+The colour "red green blue" is 3 numbers (each ranging from 0 - 1), that
+together create a colour.<p>
+
+The ambient is used to model the surface's background colour, that is, the
+object's colour if it wasn't receiving light.  The
+<a href="../3-Lights/intro.htm">ambient light</a> source in a
+scene may be defined, by default it is 1 1 1.<p>
+
+<i>Every part of every object will receive the ambient defined for it's surface.</I><p>
+
+See example below.<p>
+
+<hr>
+<h2><a name="diffuse">diffuse</h2>
+<pre>        diffuse <i>red green blue</i>
+</pre>
+The diffuse light is the light received on a surface from a light source,
+including light reflected from other surfaces.<p>
+
+See example below.<p>
+
+<hr>
+<h2><a name="specular">specular</h2>
+<pre>        specular <i>red green blue</i>
+</pre>
+Specular light refers to surface "highlights".<p>
+
+See example below.<p>
+
+<hr>
+<h2><a name="specpow">Specular Highlights</h2>
+<pre>        specpow <i>exponent</i>
+</pre>
+
+The specpow controls the size of specular highlights:  the larger the number
+the smaller the highlight.<p>
+
+See example below.<p>
+
+<hr>
+The four keywords above define the basics of a surface's colour properties.
+The actual colour
+of a particular portion of a surface depends upon what kind of light the
+surface is receiving.  If the area is not receiving light from any light source
+then it only receives ambient light;  if it is receiving light from one
+(or more) light sources then it will have a diffuse (as well as an ambient)
+component - the two components will be added together to give the colour of
+the area;  if the area is also reflecting light back towards the eye point
+then a specular component will be added to the other two parts to give the
+final colour of the area.<p>
+
+In the example below, very different colours are used for ambient, diffuse and
+specular:<br>
+    <ul>
+    <li>the areas in shadow only receive ambient light (and so are red);
+    <li>the areas receiving light are yellow:  ambient (red) + diffuse (green); and
+    <li>the areas that reflect back towards the eye point are white:
+        ambient (red) + diffuse (green) + specular (blue).
+    </ul>
+
+This example encapsulates defining surfaces!<p>
+
+<a name="fig4-02">
+<IMG SRC="fig4-02.gif">Figure 4-2<p>
+<pre>        /*
+           surface_test.ray
+           rayshade file to show the difference between
+           ambient, diffuse and specular colours.
+
+           Stephen Peter, 4 september 1990
+        */
+        eyep 20 -15 15
+        lookp 7 0 0.1
+        screen 300 200
+        light 1.4 extended 0.2 0 0 7
+
+        surface t1
+            ambient   0.5   0    0
+            diffuse    0   0.5   0
+            specular   0    0   0.5
+            specpow 22
+            reflect 0.2
+
+        box      t1  5 -3 -0.1   15 3 0.1
+        cylinder t1  4   1 -3 0   1 3 1
+</pre>
+
+<hr>
+Go to next section: <a href="reflect.htm">Reflectivity</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 4 - Defining Surfaces<p>
+</body></html>
+

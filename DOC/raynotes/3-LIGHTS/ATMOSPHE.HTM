@@ -1,0 +1,50 @@
+<html><head><TITLE>Atmospheric Effects</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="atmosphere">
+<h2>atmosphere</h2>
+<pre>        atmosphere <i>[N] [atmosphere effects]</i>
+</pre>
+
+This keyword is used to re-define the "air" (the default atmosphere).  If
+given N is the atmosphere's index of refraction (see section 6.3 of the
+Rayshade User's Guide for details).<p>
+
+The various atmosphere effects are detailed below.<p>
+
+<hr>
+<a name="fog">
+<h2>fog</h2>
+<pre>        atmosphere <i>[N]</i> fog <i>Red Green Blue  x y z</i>
+</pre>
+
+Creates a (coloured) fog effect;  (x y z) defines the "thinness" of the fog (see
+section 6.2 of the Rayshade User's Guide for details).<p>
+
+<hr>
+<a name="fogdeck">
+<h2>fogdeck</h2>
+<pre>        atmosphere <i>[N]</i> fogdeck <i>altitude offset  x1 y1 z1 ChaosScale</i>
+                       Red Green Blue  x2 y2 z2
+</pre>
+
+A "low-altitude" fog - try it out! (x1 y1 z1) defines the scale, (x2 y2 z2)
+defines thinness.<p>
+
+<hr>
+<a name="mist">
+<h2>mist</h2>
+<pre>        atmosphere <i>[N]</i> mist <i>Red Green Blue  x y z bottom scale</i>
+</pre>
+
+Similar to fog, see section 6.2 of the Rayshade User's Guide for details.<p>
+<hr>
+
+Go to next chapter: <a href="../4-surfac/intro.htm">Defining Surfaces</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 3 - Atmospheric Effects<p>
+</body></html>
+

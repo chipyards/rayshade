@@ -1,0 +1,61 @@
+<html><head><TITLE>Rayshade Introduction</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="PlaceEye">
+<H2Positioning the Eye and Look points</H2>
+
+One of the problems I commonly note when people are learning to use
+Rayshade is that they tend to place their eye and look points badly.  Often
+people put considerable effort into creation of the scene (or object) they are
+modelling and then try to guess an appropriate viewing position!  The usual
+result is that a number of images need to be produced until the view is close
+to what is wanted.<p>
+
+There are a few simple things that can be done to aid this process: sketch
+out (to scale) a plan of the scene (onto grid paper or similar - I often
+use a ruled pad with a second sheet turned 90 degrees underneath).<p>
+
+Draw up an approximate cone of vision (on a separate sheet to your plan):  if
+your eye and look points are at similar heights (that is, you are not looking
+down onto your scene) then draw a straight line to represent the viewing
+direction from the eye point to the look point;  then draw, from one end of
+your line, lines out at an angle of about half your horizontal field
+of view.  The point where the three lines join represents your eye point.
+If your eye point is to be significaantly higher than the point you're
+looking at (the lookp), then draw the lines of the cone of vision wider.<p>
+
+<IMG SRC="http:fig1-04.gif">Figure 1-4<br>
+This diagram is a plan view of the five boxes example in this chapter, showing
+the horizontal field of view from the eye-point to the look-point.<p>
+
+These three lines now (approximately) represent your cone of vision!  Place
+this under you sketched scene and move it around until the view enclosed
+between the outer lines (as "seen" from the point where the lines join) is
+about what you want.<p>
+
+Then note on your (plan) sketch the place where the lines join (the eye point!);
+to determine the look point follow your centre line until it gets to about the
+middle of your scene and use that position as the look point.  The look point
+could, in fact, be anywhere along the centre line:  you might place your look
+point beyond your object entirely, depending on the effect you are trying to
+achieve.<p>
+
+<IMG SRC="http:fig1-05.gif">Figure 1-5<br>
+This diagram shows section along the "line" from the eye-point to the look-point,
+and a (rotated) plan.<p>
+
+Depending on the complexity of the scene it could also be prudent to draw a
+sketch section along the eye/look point line, to determine whether objects
+will be visible or will be obscured by other objects closer to the eye.
+Depending on your views on neat/clean sketches, this section could be drawn
+over the top of the previous sketch or on a separate sheet.<p>
+<hr>
+
+<hr>
+Go to next chapter: <a href="../2-Primit/blob.htm">Rayshade Primitives - Blob</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 1 - Introduction<p>
+</body></html>

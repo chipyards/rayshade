@@ -1,0 +1,57 @@
+<html><head><TITLE>Objects</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+<H1>Notes on Rayshade - 5 - Objects</h1>
+
+When developing scenes with Rayshade it is usually helpful (both for sanity
+and speed reasons) to structure the input file;  breaking groups of primitives
+up into objects.  It is also important to include copious comments to remind
+yourself (or another person) what is happening and why!<p>
+
+The basic syntax of an object is:
+<pre>       [name <i>objname</i>] object-type
+<i>                 primitives and/or objects</i>
+       end  <i>[transformations] [textures]</i>
+</pre>
+Note that the "name <i>objname</i>" part is optional, if this is omitted the
+object is placed in the scene, if the object is named then it must be
+instantiated using the object keyword.<p>
+
+In the example below two objects are created, firstly an unnamed object is
+created using difference and secondly a named object "board".  The unnamed
+object is included in the scene, but 'board' is only included with
+the 'object board' entries.<p>
+
+<pre>        difference
+            box  0 0 0   20 20 8
+            list
+                disc     10   15 0 -1   0 0 -1
+                cylinder 10   15 0 -1   15 0 9
+                disc     10   15 0 9    0 0 1
+            end
+        end
+
+        name board
+            box 0 0 0  50 10 2
+
+        object board
+        object board translate 0 10 0
+        object board translate 0 20 0
+
+</pre>
+
+Rayshade has a number of different object types:
+<a href="list.htm">list</a> and <a href="grid.htm">grid</a> objects are
+lists of primitives (or other objects) while <a href="differn.htm">difference</a>,
+<a href="intersec">intersect</a> & <a href="csg.htm#union">union</a>
+objects are used to do Constructive Solid Geometry (<a href="csg.htm">CSG</a>)
+operations on pairs of objects (or primitives).<p>
+
+<hr>
+Go to next section: <a href="list.htm">List Objects</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+
+THE END - Notes on Rayshade - 5 - Objects<p>
+</body></html>

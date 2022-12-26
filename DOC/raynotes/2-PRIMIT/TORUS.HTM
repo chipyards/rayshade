@@ -1,0 +1,69 @@
+<html><head><TITLE>Rayshade Primitives - Torus</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="torus">
+<a name="fig2-18">
+<h2>torus</h2>
+<pre>        torus  <i>[surface-desc]  major-radius  minor-radius  cx cy cz  upx upy upz</i>
+</pre>
+
+<IMG SRC="fig2-18.gif">Figure 2-18<p>
+
+Create a torus (donut) whose radius is major-radius, centred at (cx cy cz);
+the thickness of the torus is minor-radius.  The orientation of the torus is
+controlled by (upx upy upz) which defines a vector from the centre of the
+torus;  the major radius is perpendicular to this vector.<p>
+
+In this example a transformed half torus is used to create the curving
+top-cord of a roof truss.  Cylinders are used to create the web members and
+the bottom-cord.  Because the truss object is "named" it will not appear in
+the scene until it is instantiated, using the syntax:<p>
+
+<pre>        object <i>[surface-name] obj-name</i>
+</pre>
+
+<a name="fig2-19">
+<IMG SRC="fig2-19.gif">Figure 2-19<p>
+<pre>        /*
+          trusses.ray
+          curving roof trusses
+          Stephen Peter 24 feb 92
+        */
+        eyep 14 28 9
+        lookp 0 6.8 1
+        screen 300 300
+        background 1 1 1
+
+        surface red  ambient  .2 0 0  diffuse .4 0 0
+        surface blue ambient  0 0 .2  diffuse  0 0 .4
+
+        name truss
+            list
+                difference      /* remove bottom half of torus */
+                    torus 8 .1  0 0 0  0 1 0
+                    box -9 -1 -9   9 1 0
+                end
+                cylinder .1  0 0 0  0 0 8
+                cylinder .1  0 0 0  0 0 8   rotate 0 1 0   45
+                cylinder .1  0 0 0  0 0 8   rotate 0 1 0  -45
+                cylinder .1 -8 0 0  8 0 0
+                sphere .1 0 0 0
+            end scale 1 1 .5
+
+        object red  truss
+        object blue truss translate 0  3 0
+        object red  truss translate 0  6 0
+        object blue truss translate 0  9 0
+        object red  truss translate 0 12 0
+</pre>
+
+<hr>
+
+Go to next primitive: <a href="triang1.htm">triangle</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 2 - Rayshade Primitives - Torus<p>
+</body></html>
+

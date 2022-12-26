@@ -1,0 +1,36 @@
+/*
+   Balustrade Unit    length: 1100
+                      height: 1000 + 660 (4 risers)
+
+   Stephn Peter   S.Peter@unsw.edu.au
+   10 Feb 93
+*/
+eyep 1600 2400 1300
+lookp 700 0 1000
+screen 300 200
+light 1 point  0 2000 2000
+background .9 .9 .9
+
+name baluster
+    box 42.5 -10 250  67.5 10 900
+
+name balustrade
+    list
+        box 0 -20 150  1100 20  250 /* bottom rail */
+        box 0 -20 900  1100 20 1000 /* top rail */
+
+        object baluster
+        object baluster translate  110 0 0
+        object baluster translate  220 0 0
+        object baluster translate  330 0 0
+        object baluster translate  440 0 0
+        object baluster translate  550 0 0
+        object baluster translate  660 0 0
+        object baluster translate  770 0 0
+        object baluster translate  880 0 0
+        object baluster translate  990 0 0
+    end
+object balustrade 
+    transform 1 0 0.6  0 1 0  0 0 1
+object balustrade 
+    transform 1 0 0.6  0 1 0  0 0 1  1100 0 660

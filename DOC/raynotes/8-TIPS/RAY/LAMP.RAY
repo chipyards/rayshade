@@ -1,0 +1,108 @@
+/*
+   demonstrate the use of #define
+   Stephn Peter   S.Peter@unsw.edu.au
+   29 march 94
+*/
+eyep  -50 -750 350
+lookp   0    0 250
+screen 300 200
+fov 60
+light 1 point 50 -600 500
+light 1 point -90 0 487  /* light in lamp */
+
+#define head_angle    0
+#define middle_angle 120
+#define base_angle   -50
+#define horiz_angle   0
+
+surface white ambient .2 .2 .2 diffuse .7 .7 .7 specular .4 .4 .4 reflect .4
+surface blue  ambient .2 .2 .2 diffuse .2 .2 .7 specular .4 .4 .4 reflect .3
+
+name joint
+    sphere 10   0 0 0
+
+name lamp_head
+    difference
+        union
+            list
+                disc 25    0 0 125    0 0 1
+                cone 62.5  0 0 0  25  0 0 125
+                disc 62.5  0 0 0      0 0 -1
+            end
+            object joint translate 35.5 0 90
+        end
+        union
+            list
+                disc      64  -3 0  15  -6 0  35
+                cylinder  64   3 0 -20  -3 0  15
+                disc      64   3 0 -20   6 0 -35
+            end
+            list  /* inside of lamp head */
+                disc white  24    0 0 124     0 0 1
+                cone white  61.5  0 0 -1  24  0 0 124
+                disc white  61.5  0 0 -1      0 0 -1
+            end
+        end
+    end translate -35.5 0 -90 rotate 0 -1 0 -90
+
+name long_arm
+    union
+        list
+            disc      5  0 0 325  0 0 1
+            cylinder  5  0 0 5    0 0 325
+            disc      5  0 0 5    0 0 -1
+        end
+        object joint
+    end
+
+name base_arm
+    union
+        list
+            disc      5  0 0 95   0 0 1
+            cylinder  5  0 0 5    0 0 95
+            disc      5  0 0 5    0 0 -1
+        end
+        object joint
+    end
+
+name base
+    union
+        list
+            disc      5  0 0 45   0 0 1
+            cylinder  5  0 0 20   0 0 45
+            disc      5  0 0 20   0 0 -1
+        end
+        difference
+            object joint scale 7.5 7.5 2.5
+            box    -100 -100 -30   100 100 0
+        end
+    end
+
+/*-------- bring the bits together --------*/
+name arm_top
+    union
+        object lamp_head rotate 0 -1 0 head_angle translate 0 0 330
+        object long_arm
+    end
+
+name arm_middle
+    union
+        object arm_top  rotate 0 -1 0 middle_angle translate 0 0 330
+        object long_arm
+    end
+
+name arm_whole
+    union
+        object arm_middle rotate 0 -1 0 base_angle translate 0 0 100
+        object base_arm
+    end
+
+name lamp_whole
+    union
+        object arm_whole rotate 0 0 1 horiz_angle translate 0 0 50
+        object base
+    end
+
+object blue lamp_whole
+
+box -500 -500 -1  500 500 0 /* "table" */

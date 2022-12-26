@@ -1,0 +1,141 @@
+<html><head><TITLE>Notes on Rayshade - Contents</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+<H1>Notes on Rayshade</h1>
+<h1>Stephen Peter</h1>
+<h3>5th Edition</h3>
+<h3>30 May 1994</h3>
+
+These notes are intended as a guide to Rayshade, the Ray Tracer
+written by Craig Kolb and Rod Bogart.  There are a number of
+holes in the coverage (at present), particularly with regard
+to the new primitives added since version 4.0 patchlevel 6.<p>
+
+<b>Comments and contributions are very welcome.</b><p>
+
+Stephen Peter,
+School of Architecture,
+University of New South Wales,
+Australia.
+S.Peter@unsw.edu.au<p>
+<hr>
+
+<h2>Contents</h2>
+
+<h3><a href="figures.htm">Table of Figures</a></h3>
+
+<h3><a href="1-introd/intro.htm">Introduction</a></h3>
+    <ul>
+    <li><a href="1-introd/intro.htm#SceneDescription">Scene Description Files</a>
+    <li><a href="1-introd/viewdef.htm#DefView">Defining a View of a Scene</a>
+        <ul>
+        <li><a href="1-introd/viewdef.htm#DefView">eyep</a>
+        <li><a href="1-introd/viewdef.htm#DefView">lookp</a>
+        <li><a href="1-introd/viewdef.htm#DefView">up</a>
+        <li><a href="1-introd/viewdef.htm#fov">fov</a>
+        <li><a href="1-introd/viewdef.htm#aperture">aperture</a>
+        <li><a href="1-introd/viewdef.htm#aperture">focaldist</a>
+        <li><a href="1-introd/viewdef.htm#screen">screen</a>
+        <li><a href="1-introd/viewdef.htm#background">background</a>
+        </ul>
+    <li><a href="1-introd/poseyep.htm">Positioning the Eye and Look points</a>
+    </ul>
+
+<h3><a href="2-Primit/blob.htm">Rayshade Primitives</a></h3>
+    Note that the coverage of the "height field" primitive is minimal,
+    and rotspline and the other primitives added since Rayshade 4 patch 6
+    are not included.  I <i>do</i> intend to include those primitives.<p>
+    <ul>
+    <li><a href="2-Primit/blob.htm">blob</a>
+    <li><a href="2-Primit/box.htm">box</a>
+    <li><a href="2-Primit/cone.htm">cone</a>
+    <li><a href="2-Primit/cylinder.htm">cylinder</a>
+    <li><a href="2-Primit/disc.htm">disc</a>
+    <li><a href="2-Primit/heightfd.htm">heightfield</a>
+    <li><a href="2-Primit/plane.htm">plane</a>
+    <li><a href="2-Primit/poly.htm">poly</a>
+    <li><a href="2-Primit/sphere.htm">sphere</a>
+    <li><a href="2-Primit/torus.htm">torus</a>
+    <li><a href="2-Primit/triang1.htm">triangle</a>
+    <li><a href="2-Primit/triang2.htm">triangle</a>
+    <li><a href="2-Primit/trianguv.htm">triangleuv</a>
+    </ul>
+
+<h3><a href="3-Lights/intro.htm">Lighting and Atmospheric Effects</a></h3>
+    <ul>
+    <li><a href="3-Lights/intro.htm">Introduction</a>
+    <li><a href="3-Lights/intro.htm#Ambient">Ambient Light</a>
+    <li><a href="3-Lights/area.htm">Area Light</a>
+    <li><a href="3-Lights/directio.htm">Directional Light</a>
+    <li><a href="3-Lights/extended.htm">Extended Light</a>
+    <li><a href="3-Lights/point.htm">Point Light</a>
+    <li><a href="3-Lights/spot.htm">Spot Light</a>
+    <li><a href="3-Lights/atmosphe.htm#atmosphere">Atmosphere</a>
+    <li><a href="3-Lights/atmosphe.htm#fog">Fog</a>
+    <li><a href="3-Lights/atmosphe.htm#fogdeck">Fogdeck</a>
+    <li><a href="3-Lights/atmosphe.htm#mist">Mist</a>
+    </ul>
+
+<h3><a href="4-surfac/intro.htm">Defining Surfaces</a></h3>
+    <ul>
+    <li><a href="4-surfac/basics.htm">Ambient</a>
+    <li><a href="4-surfac/basics.htm#diffuse">Diffuse</a>
+    <li><a href="4-surfac/basics.htm#specular">Specular</a>
+    <li><a href="4-surfac/basics.htm#specpow">Specular Highlights</a>
+    <li><a href="4-surfac/reflect.htm">Reflectivity</a>
+    <li><a href="4-surfac/transpar.htm">Transparency</a>
+    <li><a href="4-surfac/transpar.htm#index">Refraction</a>
+    <li><a href="4-surfac/body.htm">Body Colour</a>
+    <li><a href="4-surfac/body.htm#extinct">Extinction Coefficient</a>
+    <li><a href="4-surfac/body.htm#translucency">Translucency</a>
+    </ul>
+
+<h3><a href="5-object/intro.htm">Objects</a></h3>
+    <ul>
+    <li><a href="5-object/list.htm">List Object</a>
+    <li><a href="5-object/grid.htm">Grid Object</a>
+    <li><a href="5-object/csg.htm">Constructive Solid Geometry (CSG) Objects</a>
+    <li><a href="5-object/csg.htm#union">Union Object</a>
+    <li><a href="5-object/intersec.htm">Intersection Object</a>
+    <li><a href="5-object/differen.htm">Difference Object</a>
+    <li><a href="5-object/csgprob.htm">CSG Problems</a>
+    </ul>
+
+<h3><a href="6-transf/rotate.htm">Transformations</a></h3>
+    <ul>
+    <li><a href="6-transf/rotate.htm#rotate">Rotate</a>
+    <li><a href="6-transf/scale.htm">Scale</a>
+    <li><a href="6-transf/transfor.htm">Transform</a>
+    <li><a href="6-transf/translat.htm">Translate</a>
+    </ul>
+
+<h3><a href="7-textur/intro.htm">Textures</a></h3>
+    <ul>
+    <li><a href="7-textur/blotch.htm">Blotch</a>
+    <li><a href="7-textur/bump.htm">Bump</a>
+    <li><a href="7-textur/checker.htm">Checker</a>
+    <li><a href="7-textur/cloud.htm">Cloud</a>
+    <li><a href="7-textur/fbm.htm">Fbm</a>
+    <li><a href="7-textur/fbmbump.htm">Fbmbump</a>
+    <li><a href="7-textur/gloss.htm">Gloss</a>
+    <li><a href="7-textur/image.htm">Image</a>
+    <li><a href="7-textur/marble.htm">Marble</a>
+    <li><a href="7-textur/sky.htm">Sky</a>
+    <li><a href="7-textur/stripe.htm">Stripe</a>
+    <li><a href="7-textur/wood.htm">Wood</a>
+    </ul>
+
+<h3><a href="8-tips/intro.htm">Tips and Tricks</a></h3>
+    <ul>
+    <li><a href="8-tips/intro.htm">Using the C language Preprocessor</a>
+        <ul>
+        <li><a href="8-tips/define.htm">Using #define</a>
+        <li><a href="8-tips/raylib.htm">Creating an Object Library</a>
+        <li><a href="8-tips/imagelib.htm">Creating an Images directory</a>
+        </ul>
+    </ul>
+
+<hr>
+THE END - Notes on Rayshade - Contents<p>
+</body></html>

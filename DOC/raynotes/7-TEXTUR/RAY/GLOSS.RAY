@@ -1,0 +1,43 @@
+/*
+   gloss example
+   Stephn Peter   S.Peter@unsw.edu.au
+   12 Feb 93
+*/
+eyep 13 -34 65
+lookp 0 0 2
+fov 30
+
+light .75 point -20 -20 20
+light .75 point -20  20 20
+light .75 point  20  20 20
+light .75 point  20 -20 20
+
+screen 300 300
+background .9 .9 .9
+
+surface blue
+    ambient  0.2 0.2 0.5
+    diffuse  0.1 0.1 0.3
+    specular 0.3 0.3 0.6
+    specpow 10
+    reflect 0.8
+
+surface white
+    ambient  0.5 0.5 0.5
+    diffuse  0.8 0.8 0.8
+    specular 0.5 0.5 0.5
+    specpow 10
+    reflect 0.8
+
+sphere white 15  -25 25 40
+sphere white 15    0 36 40
+sphere white 15  -12  5 57  
+sphere white 15    6 13 57
+
+box blue -14   1 -1   -5 15 1  texture gloss 0.0
+box blue  -4   1 -1    5 15 1  texture gloss 0.2
+box blue   6   1 -1   15 15 1  texture gloss 0.4
+box blue -14 -14 -1   -5  0 1  texture gloss 0.6 
+box blue  -4 -14 -1    5  0 1  texture gloss 0.8 
+box blue   6 -14 -1   15  0 1  texture gloss 1.0 
+

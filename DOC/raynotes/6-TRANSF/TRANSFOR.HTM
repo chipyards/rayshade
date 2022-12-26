@@ -1,0 +1,144 @@
+<html><head><TITLE>Rayshade Transformations - Transform</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="transform">transform</h2>
+<pre>        transform  x1 y1 z1  x2 y2 x2  x3 y3 z3  [xdist ydist zdist]
+</pre>
+
+Transform is the most general transformation provided with Rayshade.  The
+nine numbers (x1 - z3) describe a 3 by 3 transformation matrix, which can
+provide scaling and shear.  An explanation of matrix manipulation is beyond
+the scope of these notes (refer to a high school or first year university
+mathematics textbook);  but, I will explain how this operator can be used!<p>
+
+The transformation below has absolutely no effect!  The three "1"s on the
+diagonal here provide scaling - though in this case a scale of 1 (which
+causes no change).  Whenever you use transform, you must have non-zero
+values for all three numbers on the diagonal.<p>
+
+<pre>        box 10 10 10  20 20 20
+        transform
+            1  0  0
+            0  1  0
+            0  0  1
+</pre>
+
+The figure 6-7 (below) shows the effect of changing one number  (in the matrix
+above) to 2;  the position in the diagram corresponds to the matrix position
+changed.  <i>Note that the axes change from X-Y to X-Z or Y-Z in some cases.</i>
+The view shown has been chosen to display the result with the least
+ambiguity.<p>
+
+<a name="fig6-07">
+<IMG SRC="fig6-07.gif">Figure 6-7<p>
+
+If you study the diagram carefully, you will be able to discern a number
+of patterns.  Firstly, changing values in the first column changes the X
+values, changing the second the Y and changing the third changes the Z.
+Secondly, changing the main diagonal has a scaling effect;  while the
+other positions provide shear.<p>
+
+In other words the view in the middle-top panel represents:<p>
+<pre>       box 10 10 10  20 20 20
+           transform
+               1    2    0
+               0    1    0
+               0    0    1
+</pre>
+
+It should be noted that this diagram shows, in each case, the results of
+changing one value (from 0 or 1 to 2).  Much more complex results can be
+obtained by changing more than one value!  For example to rotate by "Q"
+degrees (in X-Y) the matrix would be:<p>
+<pre>        cosQ  sinQ  0    -sinQ  cosQ  0    0  0  1</pre>
+though this is achieved much easier using rotate (you would not need to
+calculate the sin's and cos's).<p>
+
+An example may make this clear:  to create a staircase balustrade, I want to
+shear a (normal) balustrade by the height that the stair rises over the length
+of the balustrade object.  The stair has a going (tread) of 275 and a riser
+(step height) of 165, the balustrade object will be 1100 long (over 4 goings)
+and in that distance should shear 660 (4 risers).<p>
+
+<a name="fig6-08">
+<IMG SRC="fig6-08.gif">Figure 6-8<p>
+
+Looking at figure 6-7 (above), the only view showing a Z shear in the X-Z plane
+is in the top-right - so the basic form of the transformation will be:<p>
+
+<pre>        object balustrade
+            transform
+                1    0    k
+                0    1    0
+                0    0    1
+</pre>
+
+where "k" is some number (to be determined) that will produce the correct
+shear result!  The way to calculate "k" is quite simple:  take the coordinate at
+the top right of the object (1100 0 1000) and concatenate it with the matrix:<p>
+
+<pre>        1100    0    1000          1    0    k
+                                   0    1    0
+                                   0    0    1
+</pre>
+
+This produces a Z value of:<p>
+<pre>                                 k x 1100 + 1000</pre>
+which we want to equal:<p>
+<pre>                                 660 + 1000</pre>
+therefore:<p>
+<pre>                                 660 = k x 1100</pre>
+therefore "k" equals:<p>
+<pre>                                 660/1100 = 0.6</pre>
+
+<a name="fig6-09">
+Note in the example below, the use of the optional X Y Z translation
+to produce the second segment of the balustrade.<p>
+
+<IMG SRC="fig6-09.gif">Figure 6-9<p>
+<pre>        /*
+           transform.ray
+           Balustrade Unit    length: 1100
+                              height: 1000 + 660(4risers)
+           Stephen Peter 10 Feb 93
+        */
+        eyep 1600 2400 1300
+        lookp 700 0 1000
+        screen 300 200
+        light 1 point  0 2000 2000
+        background .9 .9 .9
+
+        name baluster
+            box 42.5 -10 250  67.5 10 900
+
+        name balustrade
+            list
+                box 0 -20 150  1100 20  250 /* bottom rail */
+                box 0 -20 900  1100 20 1000 /* top rail */
+
+                object baluster
+                object baluster translate  110 0 0
+                object baluster translate  220 0 0
+                object baluster translate  330 0 0
+                object baluster translate  440 0 0
+                object baluster translate  550 0 0
+                object baluster translate  660 0 0
+                object baluster translate  770 0 0
+                object baluster translate  880 0 0
+                object baluster translate  990 0 0
+            end
+        object balustrade
+            transform 1 0 0.6  0 1 0  0 0 1
+        object balustrade
+            transform 1 0 0.6  0 1 0  0 0 1  1100 0 660
+</pre>
+
+<hr>
+Go to next section: <a href="translat.htm">Translate</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 6 - Transformations - Transform<p>
+</body></html>
+

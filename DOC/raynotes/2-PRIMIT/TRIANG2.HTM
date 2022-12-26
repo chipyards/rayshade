@@ -1,0 +1,94 @@
+<html><head><TITLE>Rayshade Primitives - Triangle</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="triangle2">
+<a name="fig2-22">
+<h2>triangle</h2>
+<pre>        triangle <i>[surface-desc] x1 y1 z1  nx1 ny1 nz1
+                                x2 y2 z2  nx2 ny2 nz2</i>
+                                x3 y3 z3   nx3 ny3 nz3
+</pre>
+
+<IMG SRC="fig2-22.gif">Figure 2-22<p>
+
+Create a phong-shaded triangle.  The vertex normals (nx1 ny1 nz1 . . .) can
+be used to give smooth shading over a number of triangles.<p>
+
+<a name="fig2-23">
+In this example the curving form introduced on the previous page is improved by the
+addition of normals to each of the points.  As you can probably see, this is the kind of
+thing that is ideal when it's been created by someone else :-)<p>
+
+<IMG SRC="fig2-23.gif">Figure 2-23<p>
+<pre>        /*
+          tri-phong.ray
+          curving mesh with normals specified
+          Stephen Peter mon 24 feb 92
+        */
+        eyep 14 14 24
+        lookp 2.5 1.5 2.75
+        screen 300 200
+        background .9 .9 .9
+        light 1 point -10 10 10
+
+        surface green ambient 0 .2 0  diffuse 0 .6 0
+                      specular .3 .3 .3 reflect .4
+        name mesh list
+           triangle  -1.0  -2.0   2.7    -0.25 0 1
+                      3.0   0.0   2.8     0.15 0 1
+                     -1.0   2.0   2.7    -0.25 0 1
+           triangle   3.0   0.0   2.8     0.15 0 1
+                     -1.0  -2.0   2.7    -0.25 0 1
+                      3.0  -4.0   2.8     0.15 0 1
+           triangle   3.0  -4.0   2.8     0.15 0 1
+                     -1.0  -2.0   2.7    -0.25 0 1
+                     -1.0  -6.0   2.7    -0.25 0 1
+           triangle   3.0  -4.0   2.8     0.15 0 1
+                      6.0  -6.0   2.0     0.50 0 1
+                      6.0  -2.0   2.0     0.50 0 1
+           triangle   3.0  -4.0   2.8     0.15 0 1
+                      6.0  -2.0   2.0     0.50 0 1
+                      3.0   0.0   2.8     0.15 0 1
+           triangle   6.0  -2.0   2.0     0.50 0 1
+                      6.0   2.0   2.0     0.50 0 1
+                      3.0   0.0   2.8     0.15 0 1
+           triangle   6.0   2.0   2.0     0.50 0 1
+                      6.0  -2.0   2.0     0.50 0 1
+                      9.0   0.0   0.0     1.20 0 1
+           triangle   6.0  -2.0   2.0     0.50 0 1
+                      9.0  -4.0   0.0     1.20 0 1
+                      9.0   0.0   0.0     1.20 0 1
+           triangle   6.0  -2.0   2.0     0.50 0 1
+                      6.0  -6.0   2.0     0.50 0 1
+                      9.0  -4.0   0.0     1.20 0 1
+           triangle  -1.0  -6.0   2.7    -0.25 0 1
+                     -1.0  -2.0   2.7    -0.25 0 1
+                     -5.0  -4.0   1.5    -0.50 0 1
+           triangle  -1.0  -2.0   2.7    -0.25 0 1
+                     -5.0   0.0   1.5    -0.50 0 1
+                     -5.0  -4.0   1.5    -0.50 0 1
+           triangle  -1.0  -2.0   2.7    -0.25 0 1
+                     -1.0   2.0   2.7    -0.25 0 1
+                     -5.0   0.0   1.5    -0.50 0 1
+           triangle  -5.0   0.0   1.5    -0.50 0 1
+                     -8.0   2.0   0.0    -1.00 0 1
+                     -8.0  -2.0   0.0    -1.00 0 1
+           triangle  -5.0   0.0   1.5    -0.50 0 1
+                     -8.0  -2.0   0.0    -1.00 0 1
+                     -5.0  -4.0   1.5    -0.50 0 1
+           triangle  -5.0  -4.0   1.5    -0.50 0 1
+                     -8.0  -2.0   0.0    -1.00 0 1
+                     -8.0  -6.0   0.0    -1.00 0 1
+        end
+        object green mesh
+</pre>
+
+<hr>
+
+Go to next primitive: <a href="trianguv.htm">triangleuv</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 2 - Rayshade Primitives - Triangle<p>
+</body></html>

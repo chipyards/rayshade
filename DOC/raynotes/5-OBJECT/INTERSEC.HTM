@@ -1,0 +1,83 @@
+<html><head><TITLE>Objects - Intersection</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="intersect">Intersection Object</h2>
+<pre>        [name  <i>objname</i>]  intersect
+<i>                  object1</i>
+<i>                  object2</i>
+        end  <i>[transformations]  [textures]</i>
+</pre>
+
+<a name="fig5-06">
+<IMG SRC="fig5-06.gif">Figure 5-6<p>
+
+The intersect object includes those parts common to both objects.<p>
+
+I often find that the applications of intersect are less obvious than union and
+difference.  I think that we are trained from primary school in adding and
+subtracting, and so using an intersection operator is much less intuitive.<p>
+
+<a name="fig5-07">
+This example shows a simple use for intersect:  a series of boxes are
+intersected with a sphere.  The sphere is used to "cut" the edges of the
+boxes (and the resulting shape also uses the sphere's surface definition
+on the edges.<p>
+
+<IMG SRC="fig5-07.gif">Figure 5-7<p>
+<pre>        /*
+           intersect.ray
+           intersect a series of boxes with a sphere
+           Stephen Peter 2 aug 92
+        */
+
+        eyep 1250 450 1600
+        lookp 0 0 0
+        screen 300 200
+
+        light 1 point 1500 1000 1000
+
+        surface white
+            ambient  .3 .3 .3
+            diffuse  .4 .4 .4
+            specular .4 .4 .4
+            reflect .2
+            specpow 50
+
+        surface blue
+            ambient   0  0 .3
+            diffuse  .2 .2 .4
+            specular .4 .4 .4
+            reflect .2
+            specpow 25
+
+        name boxes
+            list
+                box -600 -455 -600    600 -445 600
+                box -600 -305 -600    600 -295 600
+                box -600 -155 -600    600 -145 600
+                box -600   -5 -600    600    5 600
+                box -600  155 -600    600  145 600
+                box -600  305 -600    600  295 600
+                box -600  455 -600    600  445 600
+            end
+
+        name frame
+            intersect
+	            object white boxes
+	            sphere blue  500   0 0 0
+            end
+
+        object frame rotate 0 0 1 60
+        object frame rotate 0 0 1 -60
+        object frame
+</pre>
+
+<hr>
+Go to next section: <a href="differen.htm">Difference Object</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 5 - Objects - Intersection<p>
+</body></html>
+

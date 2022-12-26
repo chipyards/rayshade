@@ -1,0 +1,77 @@
+<html><head><TITLE>Defining Surfaces</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="transp">Transparency</h2>
+<pre>        transp <i>transparency</i>
+</pre>
+A value of 1 results in an (almost) invisible object; if 0 (or omitted) the
+object is opaque (see example below).<p>
+
+<hr>
+<h2><a name="index">Refraction</h2>
+<pre>        index <i>refraction</i>
+</pre>
+A value of 1 causes rays passing through an object to not "bend"
+(to achieve a refraction like water try 1.3).<p>
+
+In this example a glass-topped timber table is shown.  The glass is 75%
+transparent which produces the "frosted" effect.  Note that this is
+accentuated by the angle of view.<p>
+
+<a name="fig4-04">
+<IMG SRC="fig4-04.gif">Figure 4-4<p>
+<pre>        /*
+           table2.ray
+           simple table (with semi-transparent top)
+           Stephen Peter  8 mar 92
+        */
+        eyep  2400 1400 1200
+        lookp  300    0  200
+        screen 300 200
+        background .9 .9 .9
+        light 1.4 directional 1000 1800 2000
+
+        surface timber
+            ambient .1 0 0  diffuse .3 .1 0
+
+        surface FrostedGlass
+            ambient  .02 .02 .02  diffuse .02 .02 .02
+            specular .8  .8  .8   specpow 32
+            transp .75  index 1.15
+
+        surface floor
+            diffuse .2 .4 .2   specular .8 .8 .8
+            specpow 25  reflect .8
+
+        /* table top */
+        box FrostedGlass -750 -450 680  750 450 700
+            texture gloss .5
+
+        /* table legs and beams */
+        name Timber list
+            cone  45   675  375 600  25   675  375 0
+            cone  45  -675  375 600  25  -675  375 0
+            cone  45   675 -375 600  25   675 -375 0
+            cone  45  -675 -375 600  25  -675 -375 0
+
+            box  725  400 600  -725  350 680
+            box  725 -400 600  -725 -350 680
+            box  725  350 600   675 -350 680
+            box -725  350 600  -675 -350 680
+        end
+
+        /* "timber" surface for object "Timber" */
+        object timber Timber
+
+        box floor -2000 -1500 -10  2000 1500 0
+</pre>
+
+<hr>
+Go to next section: <a href="body.htm"> Body Colour</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 4 - Defining Surfaces<p>
+</body></html>
+

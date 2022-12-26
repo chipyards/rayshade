@@ -1,0 +1,61 @@
+<html><head><TITLE>Rayshade Primitives - Poly</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="poly">
+<a name="fig2-14">
+<h2>poly</h2>
+<pre>poly <i>[surface-desc]  x1 y1 z1  x2 y2 z2  x3 y3 z3  [ x4 y4 z4 . . .]</i>
+</pre>
+
+<IMG SRC="fig2-14.gif">Figure 2-14<p>
+
+Create a (planar) polygon.  The specified vertices should all be planar;
+Rayshade will render the polygon if it is non-planar, but some of the heights 
+(z values) will be altered so that the polygon is planar.  The results, 
+therefore, are unpredictable.<p>
+
+<a name="fig2-13">
+In the example below, a polygon with four vertices (one of which is has a different
+height [z] value to the others, and so the plane is non-planar) is shown, four
+cylinders join the specified polygon vertices.  As you can see Rayshade has
+"changed" two of the vertex heights in order to create a planar polygon.<p>
+
+<IMG SRC="fig2-15.gif">Figure 2-15<p>
+<pre>        /*
+         poly.ray
+         non-planer polgon
+         Stephen Peter 22 feb 92
+        */
+        eyep 3 10 5
+        lookp 2.5 3 1
+        screen 300 300
+        background .9 .9 .9
+
+        poly
+            ambient  0.1 0.3 0.1     /* define the surface */
+            diffuse  0.1 0.3 0.1
+            specular 0.1 0.3 0.1
+
+            1 1 1                    /* the polygon points */
+            0 4 1
+            3 6 1
+            5 2 3
+
+        surface blue
+            ambient 0 0 .2
+            diffuse 0 0 .4
+
+        cylinder blue .05  1 1 1  0 4 1
+        cylinder blue .05  0 4 1  3 6 1
+        cylinder blue .05  3 6 1  5 2 3
+        cylinder blue .05  5 2 3  1 1 1
+</pre>
+
+<hr>
+Go to next primitive: <a href="sphere.htm">sphere</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 2 - Rayshade Primitives - Poly<p>
+</body></html>

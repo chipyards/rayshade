@@ -1,0 +1,56 @@
+<html><head><TITLE>Rayshade Primitives - Blob</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="blob">
+<H2>blob</H2>
+
+<PRE>        blob <i>[surface-desc] thresh
+              strength1 radius1 x1 y1 z1
+             [strength2 radius2 x2 y2 z2 . . . . ]</i>
+</PRE>
+
+This is, in my opinion, rayshade's strangest primitive!  It consists of one or 
+more meta-balls (spheres), which, depending on the other parameters, are 
+linked.<p>
+
+<a name="fig2-01">
+<IMG SRC="fig2-01.gif">Figure 2-1<p>
+<pre>        /* blob
+           Stephen Peter
+           21 may 94
+        */
+
+        eyep  5.0 -12  5.0
+        lookp 3.0   0  3.0
+        screen 400 400
+        light 1 point 8 -4 7
+        background .9 .9 .9
+
+        surface shiny
+            ambient .2 .2 .1
+            diffuse .3 .3 .9
+            specular .3 .3 .3
+            reflect .3
+
+        blob shiny .25
+            1    2     0 0 0
+            2    2     3 0 0
+            3    2     6 0 0
+
+           0.5   2.5   0 0 3
+            1    2     3 0 3
+            2    2     6 0 3
+
+            2    2     0 0 6
+           0.5   3     3 0 6
+            1    2     6 0 6
+</pre>
+
+<hr>
+Go to next primitive: <a href="box.htm">box</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 2 - Rayshade Primitives<p>
+</body></html>

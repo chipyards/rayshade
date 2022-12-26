@@ -1,0 +1,74 @@
+<html><head><TITLE>Rayshade Textures - Cloud</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="cloud">Cloud</h2>
+<pre>        texture cloud <i>scale H lambda octaves cthresh lthresh tscale</i></pre>
+
+This very strange texture should be used on spheres centred at (0,0,0) with a
+radius of 1 (see section  8.1 of the Rayshade User's Guide).  It alters the
+transparency of the surface to which it is applied.<p>
+
+This example shows 6 spheres:  each sphere is created at (0,0,0) using different
+parameters to the cloud texture, and is then translated into position.  Note
+the textured spheres are enclosed in list objects so the translation will effect
+the object and not the texture.<p>
+
+<a name="fig7-04">
+<IMG SRC="fig7-04.gif">Figure 7-4<p>
+<pre>        /*
+           cloud.ray
+           Cloud Texture
+           Stephen Peter 16 Feb 93
+        */
+        screen 300 450
+        fov 30
+        eyep  0 -13 0
+        lookp 0 0 0
+        background .5 .5 .7
+        light 1 point -10 -10 10
+        light 1 point  10 -10 10
+
+        surface white
+            ambient  0.4 0.4 0.4
+            diffuse  0.6 0.6 0.6
+
+        list
+            sphere white 1  0 0 0
+                texture cloud 1 0.5 2.0 6 0.16 0.87 0.33
+        end translate -1.5 0 3
+
+        list
+            sphere white 1  0 0 0
+                texture cloud 1 0.5 2.0 6 0.44 0.6 0.21
+        end translate 1.5 0 3
+
+        list
+            sphere white 1  0 0 0
+                texture cloud 1 0.5 2.0 5 0.03 0.233 0.74
+        end translate -1.5 0 0
+
+        list
+            sphere white 1  0 0 0
+                texture cloud 1 0.5 2.0 5 0.46 0.41 0.13
+        end translate 1.5 0 0
+
+        list
+            sphere white 1  0 0 0
+                texture cloud 1 0.5 2.0 6 0.08 0.36 0.94
+        end translate  -1.5 0 -3
+
+        list
+            sphere white 1  0 0 0
+                texture cloud 2 0.5 2.0 5 0.02 0.33 0.65
+        end translate  1.5 0 -3
+</pre>
+
+<hr>
+Go to next section: <a href="fbm.htm">Fbm</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 7 - Textures - Cloud<p>
+</body></html>
+

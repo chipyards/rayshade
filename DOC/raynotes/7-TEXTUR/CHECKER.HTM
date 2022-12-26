@@ -1,0 +1,66 @@
+<html><head><TITLE>Rayshade Textures - Checker</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="checker">Checker</h2>
+<pre>        texture checker <i>surface</i></pre>
+
+The checker texture is perhaps the simplest texture to understand!  Like all the
+textures it operates in three dimensions, the object's surface appearance will
+alternate with the object's default surface in the odd numbered "cubes" (for 
+example between 0 & 1) and the surface specified with the texture in the 
+even "cubes" (for example between 1 & 2).<p>
+
+In the example below a checker texture is altered by various transformations.
+Note that rotate and transform can produce some rather bizarre results.<p>
+
+<a name="fig7-03">
+<IMG SRC="fig7-03.gif">Figure 7-3<p>
+<pre>        /*
+           checker.ray
+           checker example
+           Stephen Peter 12 Feb 93
+        */
+        eyep .25 -1 19
+        lookp .25 .25 0
+        light .5 point  40 0 40
+        light .5 point -40 0 40
+        screen 300 300
+        background .9 .9 .9
+
+        surface blue
+            ambient  0.2 0.2 0.5
+            diffuse  0.1 0.1 0.3
+            specular 0.3 0.3 0.6
+            specpow 10
+            reflect 0.4
+
+        surface white
+            ambient  0.3 0.3 0.3
+            diffuse  0.5 0.5 0.5
+            specular 0.5 0.5 0.5
+            specpow 10
+            reflect 0.4
+
+        box blue -7 0.5 0  -2.5 7.5 1
+            texture checker white
+        box blue -2 0.5 0   2.5 7.5 1
+            texture checker white  scale 1 2 1
+        box blue  3 0.5 0   7.5 7.5 1
+            texture checker white  scale .5 1 1
+        box blue -7 -7  0  -2.5  0  1
+            texture checker white  rotate 1 1 1  45
+        box blue -2 -7  0   2.5  0  1
+            texture checker white  transform 1 .6 0 0 1 0 0 0 1
+        box blue  3 -7  0   7.5  0  1
+            texture checker white  transform .5 .1 .6 .2 1 0 2 .3 1
+</pre>
+
+<hr>
+Go to next section: <a href="cloud.htm">Cloud</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 7 - Textures - Checker<p>
+</body></html>
+

@@ -1,0 +1,100 @@
+<html><head><TITLE>CSG Objects</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="csg">Constructive Solid Geometry (CSG) Objects</h2>
+
+Rayshade provides three CSG operators: union, intersection and difference.
+CSG works (best) with primitives (or objects of primitives) that are closed:
+box, sphere, torus and blob;  the other primitives can be used but they must
+first be closed.  Cylinders and cones can have discs placed over their ends;
+groups of polygons that fully enclose some volume are acceptable, but
+planes, heightfields and discs are best avoided!<p>
+
+<a name="fig5-03">
+<IMG SRC="fig5-03.gif">Figure 5-3<p>
+
+The diagram above will be used with each CSG object to show simply
+how it works.  Circle A represents the first object and B represents the
+second object in the pair of objects required for CSG in Rayshade.<p>
+
+<hr>
+<h2><a name="union">Union Object</h2>
+<pre>        [name  <i>objname</i>]  union
+<i>                object1</i>
+<i>                object2</i>
+        end  <i>[transformations]  [textures]</i>
+</pre>
+
+<a name="fig5-04">
+<IMG SRC="fig5-04.gif">Figure 5-4<p>
+
+The union operator joins the two specified objects, if the objects intersect
+each other, then any internal surfaces are removed.<p>
+
+<a name="fig5-05">
+The example below is a variation on the rayshade input file used to show the
+problems of incorrectly constructed CSG surfaces
+(see <a href="list.htm#fig5-02">figure 5-2</a> and/or
+     <a href="csgprob.htm#fig5-12">figure 5-12</a>).
+This file is correctly structured.<p>
+
+<IMG SRC="fig5-05.gif">Figure 5-5<p>
+<pre>        /*
+          csg-ok.ray
+          chess piece, constructed so there are no
+          redundant surfaces.
+
+          Stephen Peter   8 mar 92
+        */
+        eyep  150 50 150
+        lookp -15 0 45
+        background .9 .9 .9
+        light .5 point 250 0 150
+        screen 200 400
+        fov 20 37
+
+        surface salmon
+            ambient  .2 .1 .1
+            diffuse  1  .5 .45
+            specular .3 .3 .3
+
+        name chess_piece
+        union
+            union
+                list  /* bottom */
+                    disc     25  0 0 0  0 0 -1
+                    cylinder 25  0 0 0  0 0 4
+                    cone     25  0 0 4  22  0 0 15
+                    disc     22  0 0 15  0 0 1
+                end
+                list  /* trunk */
+                    disc 19  0 0 14    0 0 -1
+                    cone 19  0 0 14  3  0 0 95
+                    disc  3  0 0 95    0 0 1
+                end
+            end
+            union
+                list
+                    disc     15  0 0 62  0 0 -1
+                    cylinder 15  0 0 62  0 0 66
+                    disc     15  0 0 66  0 0 1
+                end
+                sphere 14.75  0 0 77
+            end
+        end
+
+        difference
+            box 0 -30 -10  -30 30 100
+            object salmon chess_piece
+        end
+</pre>
+
+<hr>
+Go to next section: <a href="intersec.htm">Intersection Objects</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 5 - CSG Objects<p>
+</body></html>
+

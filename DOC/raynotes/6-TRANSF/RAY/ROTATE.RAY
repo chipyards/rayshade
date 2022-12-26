@@ -1,0 +1,59 @@
+/*
+   simple column (without base or top)
+
+   Stephn Peter   S.Peter@unsw.edu.au
+   7 feb 93
+*/
+eyep  6000 0 3000 
+lookp 0 0 2000
+light 1 point 3000 3000 6000
+screen 300 600
+fov 25
+background .9 .9 .9
+
+name channel
+    union
+        list
+            sphere   54.75  0 0 200
+            sphere   54.75  0 0 3800
+        end
+        list
+            disc     54.75  0 0  200    0 0 -1
+            cylinder 54.75  0 0  200    0 0 3800
+            disc     54.75  0 0 3800    0 0 1
+        end
+    end scale .7 1 1 translate 350 0 0
+
+name half_channels
+    list
+        object channel
+        object channel rotate 0 0 1   36
+        object channel rotate 0 0 1   72
+        object channel rotate 0 0 1  108
+        object channel rotate 0 0 1  144
+        object channel rotate 0 0 1  180
+        object channel rotate 0 0 1  216
+        object channel rotate 0 0 1  252
+        object channel rotate 0 0 1  288
+        object channel rotate 0 0 1  324
+    end
+
+name column
+    difference/*list*/
+        /* main trunk on column */
+        list
+            disc     350  0 0 0     0 0 -1
+            cylinder 350  0 0 0     0 0 4000
+            disc     350  0 0 4000  0 0 1
+        end
+
+        /* combine the half sets of channels */
+        union
+            object half_channels 
+            object half_channels rotate 0 0 1  18
+        end
+    end
+
+object column
+
+box -3000 -3000 -100  3000 3000 0  /* base */

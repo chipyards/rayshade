@@ -1,0 +1,50 @@
+/*
+   stripe example
+   Stephn Peter   S.Peter@unsw.edu.au
+   12 Feb 93
+*/
+eyep 13 -34 65
+lookp 0 0 2
+fov 30
+light 1 point 40 -40 40
+screen 300 300
+background .9 .9 .9
+
+surface cream
+    ambient  0.6 0.5 0.4
+    diffuse  0.9 0.8 0.6
+    specular 0.4 0.3 0.2
+
+surface green
+    ambient  0.2 0.4 0.2
+    diffuse  0.3 0.8 0.3
+    specular 0.2 0.3 0.2
+
+box cream -14 1 0  -5 15 4  
+    texture stripe green .2 3 map planar 
+    scale 3.5 3.5 3.5
+    translate 2 2 0
+
+box cream -4 1 0  5 15 4  
+    texture stripe green .1 3 map planar 
+    scale 3.5 3.5 3.5
+    translate 2 2 0
+
+box cream  6 1 0   15 15 4  
+    texture stripe green .2 8 map planar 
+    scale 3.5 3.5 3.5
+
+box cream -14 -14 0  -5 0 4  
+    texture stripe green .2 3 map planar 
+    scale 3.5 3.5 3.5
+    rotate 0 0 1  45
+
+box cream  -4 -14 0    5 0 4  
+    texture stripe green .2 3 map planar 
+    scale 3.5 3.5 3.5
+    rotate 1 1 1  45
+
+box cream  6 -14 0   15 0 4  
+    texture stripe green .2 3 map planar 
+    scale 3.5 3.5 3.5
+    transform .5 .1 .6 .2 1 0 2 .3 1

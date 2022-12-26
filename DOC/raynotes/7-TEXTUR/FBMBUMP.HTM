@@ -1,0 +1,53 @@
+<html><head><TITLE>Rayshade Textures - Fbmbump</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="fbmbump">Fbmbump</h2>
+<pre>        texture fbmbump <i>offset scale H lambda octaves</i></pre>
+
+Similar to fbm texture (see section 8.1 of the Rayshade User's Guide).
+The "noise" function is used to create a bump map which is applied to the
+object.<p>
+
+<a name="fig7-06">
+<IMG SRC="fig7-06.gif">Figure 7-6<p>
+<pre>        /*
+           fbmbump.ray
+           Fbmbump Example
+           Stephen Peter 12 Feb 93
+        */
+        eyep 0 -1 75
+        lookp 0 0 0
+        light 1 point 40 -40 40
+        screen 300 300
+        background .9 .9 .9
+
+        surface blue
+            ambient  0.2 0.2 0.5
+            diffuse  0.1 0.1 0.3
+            specular 0.3 0.3 0.6
+            specpow 10
+            reflect 0.4
+
+        box blue -29   1 -1  -11 29 1
+            texture fbmbump .3 -1 .5 2 5
+        box blue  -9   1 -1    9 29 1
+            texture fbmbump .3  0 .5 2 6
+        box blue  11   1 -1   29 29 1
+            texture fbmbump .3  1 .5 2 7
+        box blue -29 -29 -1  -11 -1 1
+            texture fbmbump .3  2 .5 2 5
+        box blue  -9 -29 -1    9 -1 1
+            texture fbmbump .3  3 .5 2 6
+        box blue  11 -29 -1   29 -1 1
+            texture fbmbump .3  4 .5 2 7
+</pre>
+
+<hr>
+Go to next section: <a href="gloss.htm">gloss</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 7 - Textures - Fbmbump<p>
+</body></html>
+

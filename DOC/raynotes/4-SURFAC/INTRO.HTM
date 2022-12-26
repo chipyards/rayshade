@@ -1,0 +1,88 @@
+<html><head><TITLE>Defining Surfaces</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+<H1>Defining Surfaces - Introduction</h1>
+
+Rayshade defines the characteristics of a surface through a number of
+keywords (see below), there are also a number of ways in which surface
+characteristics can be applied to an object.  The simplest way is to define a
+named surface and then use that name when defining the primitive;
+alternatively, the surface definition may be placed with the primitive, after
+the primitive's keyword and before its parameters;  the last way is to apply a
+surface definition to an instance of an object.<p>
+
+<pre>        surface <i>surface-name surface-definition</i>
+</pre>
+
+The surface keyword is used to associate a name with a surface definition
+(see "PeachPuff" in the example below).  Any object that does not have a
+surface definition associated with it is assigned Rayshade's default surface (a
+white/grey).<p>
+
+<pre>
+</pre>
+The example below, demonstrates each of the ways to apply surfaces to objects.
+    <ul><li>In the first object (box) a defined surface (PeachPuff) is used;
+            this is (in my opinion) the simplest and most straight-forward way
+            to apply a surface to an object.
+        <li>The second object (torus) has its surface definition with
+            the object definition.
+        <li>The next object (cone) has no surface - it uses Rayshade's
+            default surface (grey).
+        <li>The last object is a blue bowl:  the bowl is created without any
+            surface definitions, then when the bowl is included in the scene a
+            surface (blue) is applied to it;  this technique allows different
+            surfaces to be applied to the same object!
+    </ul>
+
+<a name="fig4-01">
+<IMG SRC="fig4-01.gif">Figure 4-1<p>
+<pre>        /*
+           surf1.ray
+           ways to define surfaces
+           sp  8 mar 92
+        */
+        eyep 6 12 7
+        lookp 2.5 2.5 3
+        light 1 point 8 5 5
+        background .9 .9 .9
+        screen 300 200
+
+        /* defining a "peach" surface */
+        surface PeachPuff
+            diffuse  1. .75 .65
+            specular .25 .25  .25    reflect .75
+
+        /* primitive using a defined surface */
+        box PeachPuff  0 0 0  5 5 1.5
+
+        /* primitive with surface definition */
+        torus
+            ambient .2 .1 .03    diffuse 1. .5 .15
+            1.5 .5   2.5 2.5 2.5   0 0 1
+
+        /* primitive using the default surface */
+        cone .5  2.5 2.5 1.5  0  2.5 2.5 5
+
+        /* define a "blue" surface */
+        surface blue
+            diffuse .4 .4 1  transp .75
+
+        /* create a "bowl" object (default surface) */
+        name bowl difference
+            difference
+                sphere 1.5  2.5 2.5 5.5
+                box 0 0 5  5 5 7.1
+            end
+            sphere 1.4  2.5 2.5 5.5
+        end
+        object blue bowl
+</pre>
+
+<hr>
+Go to next section: <a href="basics.htm">Ambient</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 4 - Defining Surfaces<p>
+</body></html>

@@ -1,0 +1,59 @@
+<html><head><TITLE>Rayshade Textures - Wood</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="wood">Wood</h2>
+<pre>        texture wood</pre>
+
+This texture produces a wood-like texture!  It also completely changes the
+colour of the surface to which it is applied (the resulting surface is much
+more "brown").<p>
+
+In the example below six cream coloured boxes have wood texture applied to them.
+The wood texture on all the boxes (except the one on the left) has been scaled.<p>
+
+The wood texture works best (in my opinion) when the scale is extreme in one
+direction - "along the grain" (like the bottom-right box in this example).<p>
+
+<a name="fig7-12">
+<IMG SRC="fig7-12.gif">Figure 7-12<p>
+<pre>        /*
+           wood.ray
+           wood example
+           Stephen Peter 12 Feb 93
+        */
+        eyep .5 -1 37.5
+        lookp .5 .5 0
+        light 1 point  40 0 40
+        light 1 point -40 0 40
+        screen 300 300
+        background .9 .9 .9
+
+        surface cream
+            ambient  0.6 0.5 0.4
+            diffuse  0.9 0.8 0.6
+            specular 0.4 0.3 0.2
+            reflect 0.4
+
+        box cream -14   1 0  -5 15 1  texture wood
+        box cream  -4   1 0   5 15 1  texture wood
+            scale 1 0.5 1
+        box cream   6   1 0  15 15 1  texture wood
+            scale 1 10 10
+        box cream -14 -14 0  -5  0 1  texture wood
+            scale 5 25 1
+        box cream  -4 -14 0   5  0 1  texture wood
+            scale 5 90 1
+        box cream   6 -14 0  15  0 1  texture wood
+            scale 1 75 1
+</pre>
+
+<hr>
+
+Go to next chapter: <a href="../8-tips/intro.htm">Tips and Tricks</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 7 - Textures - Wood<p>
+</body></html>
+

@@ -1,0 +1,39 @@
+/*
+    curving roof trusses
+    Stephn Peter   S.Peter@unsw.edu.au
+    24 feb 92
+*/
+eyep 14 28 9
+lookp 0 6.8 1
+screen 300 200
+background .9 .9 .9
+
+surface red
+    ambient  .2 0 0
+    diffuse  .4 0 0
+surface blue
+    ambient   0 0 .2
+    diffuse   0 0 .4
+
+
+name truss list
+	/* remove bottom half of torus */
+	difference
+		torus 8 .1  0 0 0  0 1 0
+		box -9 -1 -9   9 1 0
+	end
+
+	/* add the truss cords */
+	cylinder .1   0 0 0  0 0 8
+	cylinder .1   0 0 0  0 0 8  rotate  0 1 0  45
+	cylinder .1   0 0 0  0 0 8  rotate  0 1 0 -45
+	cylinder .1  -8 0 0  8 0 0
+
+	sphere .1 0 0 0
+end scale 1 1 .5
+
+object red  truss
+object blue truss translate 0  3 0
+object red  truss translate 0  6 0
+object blue truss translate 0  9 0
+object red  truss translate 0 12 0

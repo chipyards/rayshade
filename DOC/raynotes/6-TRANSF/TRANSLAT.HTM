@@ -1,0 +1,66 @@
+<html><head><TITLE>Rayshade Transformations - Translate</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="translate">
+<a name="fig6-10">
+<h2>translate</h2>
+<pre>        translate  xdist ydist zdist
+</pre>
+
+<IMG SRC="fig6-10.gif">Figure 6-10<p>
+
+Translate operates like the addition (+) operator in mathematics!  The object
+is moved the specified (positive or negative) distance.<p>
+
+<a name="fig6-11">
+Note in the example below, that the central cylinder penetrates the base
+and top cylinders - this is done to stop possible CSG problems.<p>
+
+<IMG SRC="fig6-11.gif">Figure 6-11<p>
+<pre>        /*
+          translate.ray
+          group of four columns
+          Stephen Peter 8 Feb 93
+        */
+        eyep 6000 9000 1000
+        lookp 3400 0 1750
+        screen 300 200
+        light 1 point 0 7000 5000
+
+        name column-base
+            list
+                disc     400  0 0 0    0 0 -1
+                cylinder 400  0 0 0    0 0 200
+                disc     400  0 0 200  0 0 1
+            end
+
+        name column
+            union
+                list
+                    object column-base
+                    object column-base translate 0 0 2800
+                end
+
+                list
+                    disc     250  0 0  190  0 0 -1
+                    cylinder 250  0 0  190  0 0 2810
+                    disc     250  0 0 2810  0 0 1
+                end
+            end
+
+        /* row of four columns - using the default surface*/
+        object column
+        object column translate 2000 0 0
+        object column translate 4000 0 0
+        object column translate 6000 0 0
+</pre>
+
+<hr>
+Go to next chapter: <a href="../7-textur/intro.htm">Textures</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 7 - Transformations - Translate<p>
+</body></html>
+

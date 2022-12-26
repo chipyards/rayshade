@@ -1,0 +1,49 @@
+<html><head><TITLE>Lighting and Atmospheric Effects - Spot Light</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<a name="Spot">
+<a name="fig3-09">
+<h2>Spot Light</h2>
+<pre>        light <i>intensity</i> spot <i>x1 y1 z1  x2 y2 z2 a [Qin Qout]</i>
+</pre>
+
+<IMG SRC="fig3-09.gif">Figure 3-9<p>
+
+Place a spot light at (x1,y1,z1) shining towards (x2,y2,z2).  Qin represents the
+angle (from the direction of the light) at which the intensity starts to
+decrease.  Qout is the angle at which the intensity reaches zero.  a controls
+the rate of the drop-off from Qin to Qout (the higher the number the faster the
+drop-off - see section 4.1 of The Rayshade User's Guide for details).<p>
+
+<a name="fig3-10">
+<IMG SRC="fig3-10.gif">Figure 3-10<p>
+<pre>        /*
+           spot.ray
+           Spot Light Example
+           Stephen Peter 18 Feb 93
+        */
+        eyep 0 -24 0
+        lookp 0 0 0
+        screen 400 400
+
+        light 1 spot  -5 -10  5  -5 0  5  -16  10 20
+        light 1 spot   5 -10  5   5 0  5    1  10 20
+        light 1 spot  -5 -10 -5  -5 0 -5   16  10 20
+        light 1 spot   5 -10 -5   5 0 -5   64  10 20
+
+        surface wall
+            ambient 0.6 0.1 0.1
+            diffuse 0.9 0.8 0.6
+
+        box wall  -12 0 -12  12 1 12
+</pre>
+
+<hr>
+Go to next section: <a href="atmosphe.htm">Atmospheric Effects</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 3 - Lighting and Atmospheric Effects - Spot Light<p>
+</body></html>
+

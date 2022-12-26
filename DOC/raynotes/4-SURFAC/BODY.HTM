@@ -1,0 +1,79 @@
+<html><head><TITLE>Defining Surfaces</TITLE>
+<link rev="made" href="S.Peter@unsw.edu.au">
+</head>
+<body>
+
+<h2><a name="body">Body Colour</h2>
+<pre>        body <i>red green blue</i>
+</pre>
+The body colour affects the colour of rays that pass through;
+this can be used to colour (semi)transparent objects.<p>
+
+<a name="fig4-05">
+<IMG SRC="fig4-05.gif">Figure 4-5<p>
+<pre>        /*
+           example of body;
+             2 glass cubes (one with "body")
+           Stephen Peter 21 may 94
+        */
+        eyep  8 -5 4
+        lookp 3  2 .3
+        screen 450 300
+        light 1 point  4 -8 5
+        light 1 point -4 -8 5
+
+
+        surface glass1
+            ambient  .02 .02 .02
+            diffuse  .02 .02 .02
+            specular .80 .80 .80
+            specpow  32
+            transp   .75
+            index    1.15
+
+        surface glass2
+            ambient  .02 .02 .02
+            diffuse  .02 .02 .02
+            specular .80 .80 .80
+            specpow  32
+            transp   .75
+            index    1.15
+            body     .4  .3  1
+
+        surface cream
+            ambient  .2 .2 .2
+            diffuse  .7 .7 .7
+            specular .3 .3 .3
+
+        surface green
+            ambient  .2 .2 .2
+            diffuse   0 .7  0
+            specular .2 .4 .2
+
+        /* base */
+        plane green 0 0 0   0 0 1
+          texture checker cream
+
+        box glass1  0 0 0  2 2 2
+        box glass2  4 0 0  6 2 2
+</pre>
+<hr>
+<h2><a name="extinct">Extinction Coefficient</h2>
+<pre>        extinct <i>coefficient</i>
+</pre>
+Controls the intensity of rays passing through transparent objects.<p>
+
+<hr>
+<a name="translucency">
+<h2>Translucency</h2>
+<pre>        translucency <i>translu red green blue stexp</i>
+</pre>
+Translucency is used to light a surface if the side facing away from the eye 
+point is receiving light.<p>
+<hr>
+
+Go to next chapter: <a href="../5-object/intro.htm">Objects</a>.<p>
+Return to <a href="../contents.htm">Contents</a>.<p>
+
+THE END - Notes on Rayshade - 4 - Defining Surfaces<p>
+</body></html>
