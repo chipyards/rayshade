@@ -28,9 +28,7 @@
 
 #include <stdio.h>
 #include <math.h>
-#ifdef I_STDLIB
 #include <stdlib.h>
-#endif
 #include "config.h"
 
 typedef double Float;

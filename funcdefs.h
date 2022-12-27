@@ -35,9 +35,6 @@
 /*
  * Misc. routines.
  */
-#ifndef I_STDLIB
-extern void	free(), exit();
-#endif
 
 extern void get_cpu_time(), read_input_file();
 

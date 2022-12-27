@@ -26,7 +26,7 @@
 
 #include "common.h"
 
-extern double   sqrt(), cbrt(), cos(), acos();
+// extern double   sqrt(), cbrt(), cos(), acos();
 
 /* epsilon surrounding for near zero values */
 

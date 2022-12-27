@@ -88,7 +88,7 @@
 /* RUSAGE:
  *	This symbol, if defined, indicates that the getrusage() routine exists.
  *	Inclusion of <sys/resource.h> and <sys/time.h> may be necessary.
- */
+ *
 #define	RUSAGE		//*/
 
 /* TIMES:
@@ -101,7 +101,7 @@
  *	or clock_t on BSD sites (in which case <sys/types.h> should be
  *	included). Moreover, the Clock_t symbol is defined in common.h
  *	and should be used for easy clean reference.
- */
+ *
 #define TIMES		//*/
 #define CLOCKTYPE long		//*/
 
@@ -147,8 +147,11 @@
  *	This symbol defines the macro to be used in seeding the
  *	random number generator (see nrand).
  */
-#define nrand()		drand48()		//*/
-#define seednrand(x)	srand48(x)	//*/
+// #define nrand()		drand48()		//*/
+// #define seednrand(x)	srand48(x)	//*/
+
+#define nrand()		((double)rand()/(double)(0x7FFFFFFF))		//*/
+#define seednrand(x)	srand(x)	//*/
 
 /* VOIDFLAGS:
  *	This symbol indicates how much support of the void type is given by this
@@ -180,10 +183,4 @@
  *	Toolkit is being used.
  */
 //#define       URT          //*/
-
-/* I_VARARGS:
- *	This symbol, if defined, indicates to the C program that it should
- *	include <stdlib.h>.
- */
-/*#undef I_STDLIB		//*/
 
